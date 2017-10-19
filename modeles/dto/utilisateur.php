@@ -1,17 +1,17 @@
 <?php
 class Utilisateur{
-    private $login;
+    private $email;
     private $mdp;
-    
-    public function __construct($unLogin  , $unMdp ){
-        $this->login = $unLogin;
+
+    public function __construct($unEmail, $unMdp){
+        $this->email = $unEmail;
         $this->mdp = $unMdp;
     }
-    public function getLogin(){
-        return $this->login;
+    public function getEmail(){
+        return $this->email;
     }
-    public function setLogin($unLogin){
-        $this->login = $unLogin;
+    public function setEmail($unEmail){
+        $this->email = $unEmail;
     }
     public function getMdp(){
         return $this->mdp;
@@ -20,4 +20,3 @@ class Utilisateur{
         $this->mdp = $unMdp;
     }
 }
-

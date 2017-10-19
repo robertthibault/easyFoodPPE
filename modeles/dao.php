@@ -73,4 +73,9 @@ class utilisateurDAO{
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login[0];
     }
+
+		public static function dernierNumero(){
+			$sql = "SELECT ";
+		}
+
 }
