@@ -66,58 +66,6 @@ class DBConnex extends PDO{
 	}
 }
 
-
-class EquipeDAO{
-
-
-	public static function lire(Equipe $equipe){
-		$sql = "select * from Equipe where idEquipe = " . $equipe->getIdEquipe();
-		$equipe = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		return $equipe;
-	}
-
-
-	public static function supprimer(Equipe $equipe){
-		$sql = "DELETE FROM equipe WHERE idEquipe =" .$equipe->getIdEquipe();
-		return DBConnex::getInstance()->delete($sql);
-	}
-
-	public static function modifier(Equipe $equipe){
-	    $sql = "update equipe set
-	               nomEquipe = '" . $equipe->getNomEquipe() . "',
-	               nomEquipeLong = '" . $equipe->getNomEquipeLong() . "',
-	               nomEntraineur = '" . $equipe->getNomEntraineur() . "',
-	               nomPresident = '" . $equipe->getNomPresident() . "',
-	               dateFondation = " . $equipe->getDateFondation() .
-	               " where idEquipe =" . $equipe->getIdEquipe();
-	    return DBConnex::getInstance()->update($sql);
-
-	}
-
-	public static function ajouter(Equipe $equipe){
-		$sql = "INSERT INTO equipe(nomEquipe, nomEquipeLong, nomEntraineur, nomPresident, dateFondation)
-                VALUES ('" . $equipe->getNomEquipe() . "','" . $equipe->getNomEquipeLong() . "','" . $equipe->getNomEntraineur() . "','" . $equipe->getNomPresident() . "','" . $equipe->getDateFondation() . "')";
-		return DBConnex::getInstance()->insert($sql);
-    }
-
-
-
-	public static function lesEquipes(){
-		$result = array();
-		$sql = "select * from equipe order by nomEquipe " ;
-		$liste = DBConnex::getInstance()->queryFetchAll($sql);
-		if(!empty($liste)){
-			foreach($liste as $equipe){
-				$uneEquipe = new Equipe($equipe['idEquipe'],$equipe['nomEquipe'] );
-				$uneEquipe->hydrate($equipe);
-				$result[] = $uneEquipe;
-			}
-		}
-		return $result;
-	}
-
-}
-
 class utilisateurDAO{
 
     public static function verification(Utilisateur $utilisateur){
@@ -125,5 +73,11 @@ class utilisateurDAO{
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login[0];
     }
+
+		public static function dernierNumero(){
+			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+			return $num;
+		}
+
 }
-	
