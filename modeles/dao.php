@@ -75,7 +75,9 @@ class utilisateurDAO{
     }
 
 		public static function dernierNumero(){
-			$sql = "SELECT ";
+			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+			return $num;
 		}
 
 }
