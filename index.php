@@ -7,7 +7,7 @@ session_start()?>
 		<meta charset="utf-8" />
 		<title>EasyFood</title>
 		<style type="text/css">
-			@import url(styles/championnat.css);
+			@import url(styles/EasyFood.css);
 		</style>
 	</head>
 	<body>
