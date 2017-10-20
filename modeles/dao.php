@@ -81,6 +81,7 @@ class utilisateurDAO{
 		}
 
 }
+<<<<<<< HEAD
 
 class TypePlatDAO{
 
@@ -100,4 +101,9 @@ class RestoDAO{
 			return $num;
 		}
 
+ */
+{
+	public static function dernierNumero(){
+		$sql = "SELECT MAX(IDP) FROM PLAT;";
+>>>>>>> DevelopRoustin
 }
