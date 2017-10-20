@@ -34,7 +34,7 @@ $menuPrincipal->ajouterComposant($menuPrincipal->creerItemImage("classement",  "
 $menuPrincipal->ajouterComposant($menuPrincipal->creerItemImage("historique",  "images/historique.png" , "Historique"));
 
 if(isset($_SESSION['identification']) && $_SESSION['identification']){
-    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemImage("connexion", "images/deconnex.png" , "Déconnexion"));
+    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemImage("connexion", "images/deconnex.png" , "DÃ©connexion"));
 }
 else{
     $menuPrincipal->ajouterComposant($menuPrincipal->creerItemImage("connexion", "images/connex.png" , "Connexion"));
