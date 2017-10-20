@@ -24,7 +24,7 @@ class DBConnex extends PDO{
 			self::$instance = null;
 		}
 	}
-	
+
 
 	public function queryFetchAll($sql){
 		$sth  =$this->query($sql);
@@ -60,7 +60,7 @@ class DBConnex extends PDO{
 	public function update($sql){
 		return $this->exec($sql) ;
 	}
-	
+
 	public function delete($sql){
 		return $this->exec($sql) ;
 	}
@@ -68,19 +68,20 @@ class DBConnex extends PDO{
 
 
 class EquipeDAO{
-	
-	
+
+
 	public static function lire(Equipe $equipe){
 		$sql = "select * from Equipe where idEquipe = " . $equipe->getIdEquipe();
 		$equipe = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		return $equipe;
 	}
-	
-	
+
+
 	public static function supprimer(Equipe $equipe){
-		
+		$sql = "DELETE FROM equipe WHERE idEquipe =" .$equipe->getIdEquipe();
+		return DBConnex::getInstance()->delete($sql);
 	}
-	
+
 	public static function modifier(Equipe $equipe){
 	    $sql = "update equipe set
 	               nomEquipe = '" . $equipe->getNomEquipe() . "',
@@ -90,15 +91,17 @@ class EquipeDAO{
 	               dateFondation = " . $equipe->getDateFondation() .
 	               " where idEquipe =" . $equipe->getIdEquipe();
 	    return DBConnex::getInstance()->update($sql);
-		
+
 	}
-	
+
 	public static function ajouter(Equipe $equipe){
-		
-	}
-	
-	
-	
+		$sql = "INSERT INTO equipe(nomEquipe, nomEquipeLong, nomEntraineur, nomPresident, dateFondation)
+                VALUES ('" . $equipe->getNomEquipe() . "','" . $equipe->getNomEquipeLong() . "','" . $equipe->getNomEntraineur() . "','" . $equipe->getNomPresident() . "','" . $equipe->getDateFondation() . "')";
+		return DBConnex::getInstance()->insert($sql);
+    }
+
+
+
 	public static function lesEquipes(){
 		$result = array();
 		$sql = "select * from equipe order by nomEquipe " ;
@@ -112,11 +115,11 @@ class EquipeDAO{
 		}
 		return $result;
 	}
-	
+
 }
 
 class utilisateurDAO{
-    
+
     public static function verification(Utilisateur $utilisateur){
         $sql = "select login from Utilisateur where login = '" . $utilisateur->getLogin() . "' and  mdp = '" .  md5($utilisateur->getMdp()) ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
