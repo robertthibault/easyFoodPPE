@@ -130,6 +130,20 @@ class RestoDAO{
 
 class PlatDAO{
 
+	public function ajouter(Plat $plat){
+		$sql = "INSERT INTO PLAT
+						VALUES ('".$plat->getIdP().
+						"','".$plat->getIdR().
+						"','".$plat->getIdT().
+						"','".$plat->getnomP().
+						"','".$plat->getPrixFournisseurP().
+						"','".$plat->getPrixClientP().
+						"','".$plat->getPlatVisible().
+						"','".$plat->getDescriptionP().
+						"')";
+		return DBConnex::getInstance()->insert($sql);
+	}
+
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDP) FROM PLAT;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);

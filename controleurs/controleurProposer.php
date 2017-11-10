@@ -1,5 +1,10 @@
 <?php
 
+  if (isset($_POST['proposer'])) {
+    $plat = new Plat($_POST['resto'],$_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);
+    PlatDAO::ajouter($plat);
+  }
+
   $lesRestos = RestoDAO::lireRestos();
   $lesTypesPLats = TypePlatDAO::lesTypesPlats();
 
@@ -28,6 +33,8 @@
   $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('description', 'Description :'), 1);
   $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerInputTexte('description', 'description', '', 1, ''), 1);
   $formulaireProposer->ajouterComposantTab();
+
+  $formulaireEquipe->ajouterComposantLigne($formulaireEquipe->creerInputSubmit('proposer', 'proposer', "Proposer"), 1);
 
   $formulaireEquipe->creerFormulaire();
 
