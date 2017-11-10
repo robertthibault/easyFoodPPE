@@ -108,5 +108,26 @@ class platDAO{
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		return $num;
 	}
+	public static function lesPlats(){
+		$result = array();
+		$sql = "SELECT * FROM PLAT ORDER BY NOMP " ;
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if(!empty($liste)){
+			foreach($liste as $plat){
+				$unPlat = new Plat($plat['idP'],$plat['nomP'] );
+				$unPlat->hydrate($plat);
+				$result[] = $unPlat;
+			}
+		}
+		return $result;
+	}
+
+	class CommandeDAO{
+		public static function dernierNumero(){
+			$sql = "SELECT MAX(IDC) FROM COMMANDE;";
+			$num = DBConnex::getinstance()->queryFetchFirstRow($sql);
+			return $num;
+		}
+	}
 
 }
