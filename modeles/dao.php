@@ -82,6 +82,7 @@ class utilisateurDAO{
 
 }
 
+
 class TypePlatDAO{
 
 		public static function dernierNumero(){
@@ -100,8 +101,8 @@ class RestoDAO{
 			return $num;
 		}
 
-class platDAO
-{
+class platDAO{
+
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDP) FROM PLAT;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
