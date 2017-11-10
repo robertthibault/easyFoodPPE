@@ -84,6 +84,20 @@ class utilisateurDAO{
 
 class TypePlatDAO{
 
+	public static function lesTypesPlats(){
+		$result = [];
+		$sql = "SELECT * FROM TYPE_PLAT ORDER BY LIBELLLET;";
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if(!empty($liste)){
+			foreach($liste as $typePlat){
+				$unTypePlat = new TypePlat($typePlat['LIBELLET']);
+				$unTypePlat->hydrate($typePlat);
+				$result[] = $unTypePlat;
+			}
+		}
+		return $result;
+	}
+
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDT) FROM TYPE_PLAT;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
@@ -94,14 +108,28 @@ class TypePlatDAO{
 
 class RestoDAO{
 
+	public static function lesRestos(){
+		$result = [];
+		$sql = "SELECT * FROM RESTO ORDER BY NOMR" ;
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if(!empty($liste)){
+			foreach($liste as $resto){
+				$unResto = new Resto($resto['IDU'], $resto['NOMR'], $resto['NUMADDR'], $resto['RUEADDR'], $resto['CPR'], $resto['VILLER']);
+				$unResto->hydrate($resto);
+				$result[] = $unResto;
+			}
+		}
+		return $result;
+	}
+
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDR) FROM RESTO;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 			return $num;
 		}
 
-class platDAO
-{
+class PlatDAO{
+
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDP) FROM PLAT;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
