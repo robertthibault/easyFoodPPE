@@ -90,6 +90,10 @@ class Formulaire{
 		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
 		return $composant;
 	}
+	public function creerInputButton($unNom,$unId){
+		$composant = "<button type = 'button' id= '" . $unId . "'>" .$unNom."</button>";
+		return $composant;
+	}
 
 	public function creerSelect($unNom, $unId, $unLabel, $options){
 		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
