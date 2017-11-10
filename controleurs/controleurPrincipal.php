@@ -56,6 +56,7 @@ echo '3';
 
 $menu = $menuPrincipal->creerMenu('menuPrincipal');
 
+echo $menu;
 echo '4';
 
 
