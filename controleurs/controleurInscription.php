@@ -1,5 +1,16 @@
 <?php
 
+if(isset($_POST['inscrire'])){
+        $utilisateur = new Utilisateur();
+        $utilisateur->setCivilite($_POST['civilite']);
+        $utilisateur->setNom($_POST['nom']);
+        $utilisateur->setPrenom($_POST['prenom']);
+        $utilisateur->setEmail($_POST['email']);
+        $utilisateur->setMdp($_POST['mdp']);
+        $utilisateur->setTypeU($_POST['typeU']);
+        utilisateurDAO::ajouter($utilisateur);
+    }
+
 $formulaireInscription = new Formulaire('post', 'index.php', 'fInscription', '');
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("nom", "Nom :"), 1);
@@ -38,3 +49,5 @@ $formulaireInscription->ajouterComposantTab();
 
 
 $formulaireInscription->creerFormulaire();
+
+include_once 'vues/squeletteInscription.php';

@@ -74,11 +74,17 @@ class utilisateurDAO{
         return $login[0];
     }
 
-		public static function dernierNumero(){
-			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
-			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $num;
-		}
+	public static function dernierNumero(){
+		$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		return $num;
+	}
+	
+	public static function ajouter(Utilisateur $utilisateur){
+	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
+                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
+	    return DBConnex::getInstance()->insert($sql);
+	}
 
 }
 
