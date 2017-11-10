@@ -1,9 +1,36 @@
 <?php
 
+  $lesRestos = RestoDAO::lireRestos();
+  $lesTypesPLats = TypePlatDAO::lesTypesPlats();
+
   $formulaireProposer = new Formulaire('post', 'index.php', 'fProposer', '');
 
-  $formulaireEquipe->ajouterComposantLigne($formulaireEquipe->creerLabelFor('nom', 'Nom :'), 1);
-  $formulaireEquipe->ajouterComposantLigne($formulaireEquipe->creerInputTexte('nom', 'nom', '', 1, ''), 1);
-  $formulaireEquipe->ajouterComposantTab();
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('nom', 'Nom :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerInputTexte('nom', 'nom', '', 1, ''), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', 'Resto :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerSelect('resto', 'resto', 'resto', $lesRestos), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('typeplat', 'Type de plat :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerSelect('typeplat', 'typeplat', 'typeplat', $lesTypesPLats), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('prixF', 'Prix du fournisseur :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerInputTexte('prixF', 'prixF', '', 1, ''), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('prixC', 'Prix du client :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerInputTexte('prixC', 'prixC', '', 1, ''), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('description', 'Description :'), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerInputTexte('description', 'description', '', 1, ''), 1);
+  $formulaireProposer->ajouterComposantTab();
+
+  $formulaireEquipe->creerFormulaire();
+
+  include_once "vues/squeletteProposer.php";
 
  ?>

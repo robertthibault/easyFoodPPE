@@ -97,9 +97,9 @@ class Formulaire{
 		foreach ($options as $option){
 			$composant .= "<option value = '" ;
 			$tab = $options[$i];
-			$composant .= $tab->getIdEquipe();
+			$composant .= $tab->getR();
 			$i++;
-			$composant .= "'> " . $tab->getNomEquipe();
+			$composant .= "'> " . $tab->getNomR();
 			$composant .= "</option>";
 		}
 		$composant .= "</select></td></tr>";
