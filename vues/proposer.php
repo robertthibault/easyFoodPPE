@@ -1,5 +1,7 @@
 <div>
 
-  <<?php echo $formulaireProposer->afficherFormulaire() ?>
+  <<?php echo $formulaireProposer->afficherFormulaire();
+echo "tert33";
+   ?>
 
 </div>

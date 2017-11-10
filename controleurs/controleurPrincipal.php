@@ -1,11 +1,21 @@
 <?php
 
+
 require_once 'configs/param.php';
 require_once 'lib/menu.php';
 require_once 'lib/formulaire.php';
 require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
-require_once 'modeles/dao.php';
+
+echo 'testy';
+//require_once 'modeles/dao.php';
+
+echo 'testy';
+
+require 'controleurs/controleurProposer.php';
+
+
+/*
 
 
 if(isset($_GET['menuPrincipalC'])){
@@ -53,3 +63,5 @@ if(isset($_POST['login'] , $_POST['mdp'])){
 }
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipalC']);
+
+*/

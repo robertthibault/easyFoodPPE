@@ -1,5 +1,6 @@
 <?php
-
+echo 'terst ';
+/*
   if (isset($_POST['proposer'])) {
     $plat = new Plat($_POST['resto'],$_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);
     PlatDAO::ajouter($plat);
@@ -37,7 +38,7 @@
   $formulaireEquipe->ajouterComposantLigne($formulaireEquipe->creerInputSubmit('proposer', 'proposer', "Proposer"), 1);
 
   $formulaireEquipe->creerFormulaire();
-
+*/
   include_once "vues/squeletteProposer.php";
 
  ?>
