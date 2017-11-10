@@ -3,17 +3,16 @@
 $plats = platDAO::lesPlats();
 
 $formulairePlat = new Formulaire('post', 'index.php', 'fPlat', '');
-foreach ($plats as Plat) {
-  $formulairePlat->ajouterComposantLigne($formulairePlat->creerInputImage());
-  $formulairePlat->ajouterComposantLigne($formulairePlat->creerLabelFor("nom", "Nom :"), 1);
-  $formulairePlat->ajouterComposantLigne($formulairePlat->creerInputTexte("nom", "nom", '',1, ''), 1);
+foreach ($plats as $plat) {
+  $formulairePlat->ajouterComposantLigne($formulairePlat->creerInputImage("images/".$plat->nomP.".jpg"),2);
+  $formulairePlat->ajouterComposantLigne($formulairePlat->creerLabel($plat->nomP), 1);
+  $formulairePlat->ajouterComposantLigne($formulairePlat->creerInputButton("Ajouter","Ajouter_".$plat->nomP), 1);
   $formulairePlat->ajouterComposantTab();
-
 
 }
 
 
 
-$formulaireInscription->creerFormulaire();
+$formulairePlat->creerFormulaire();
 
 ?>
