@@ -59,8 +59,8 @@ class Plat
     $this->platVisible = $estVisible;
   }
   public function getDescriptionP(){
-    return $this->descriptionP
-  }
+    return $this->descriptionP;
+  }  
   public function setDescriptionP($uneDescriptionP){
     $this->descriptionP = $uneDescriptionP;
   }
