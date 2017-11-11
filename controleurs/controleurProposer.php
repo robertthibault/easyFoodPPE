@@ -1,6 +1,9 @@
 <?php
 
+  //Temporaire
   $_SESSION['identification']['IDU'] = 7;
+  //Temporaire
+  
   $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
 
   if (isset($_POST['proposer'])) {

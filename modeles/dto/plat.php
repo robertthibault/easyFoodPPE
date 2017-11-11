@@ -6,14 +6,14 @@ class Plat
   private $idR;
   private $idT;
   private $nomP;
-  private $prixFrounisseurP;
+  private $prixFournisseurP;
   private $prixClientP;
   private $platVisible;
   private $descriptionP;
 
-  function __construct($unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
+  function __construct($unIdP,$unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
   {
-    $this->idP = platDAO::dernierNumero();
+    $this->idP = $unIdP;
     $this->idR = $unIdR;
     $this->idT = $unIdT;
     $this->nomP = $unNomP;
@@ -69,9 +69,15 @@ class Plat
     $this->descriptionP = $uneDescriptionP;
   }
 
+  public function hydrate(array $donnees){
+		foreach ($donnees as $key => $value){
+			$method = 'set'.ucfirst($key);
+			if (method_exists($this, $method)){
+				$this->$method($value);
+			}
+		}
+	}
+
 }
-
-
-
 
  ?>

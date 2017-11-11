@@ -128,6 +128,21 @@ class RestoDAO{
 
 class PlatDAO{
 
+	public static function lesPlatsIdR($unIdR){
+		$result = [];
+		$sql = "SELECT * FROM PLAT WHERE IDR=".$unIdR;
+		echo $sql;
+		$liste = DBConnex::getInstance()->queryFetchAll($sql);
+		if(!empty($liste)){
+			foreach($liste as $plat){
+				$unPlat = new Plat(PlatDAO::dernierNumero(), $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+				$unPlat->hydrate($plat);
+				$result[] = $unPlat;
+			}
+		}
+		return $result;
+	}
+
 	public static function ajouter(Plat $plat){
 		$sql = "INSERT INTO PLAT
 						VALUES ('".$plat->getIdP().
