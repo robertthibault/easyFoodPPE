@@ -5,8 +5,9 @@ require_once 'lib/formulaire.php';
 require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
+require 'controleurConnexion.php';
 
-
+/*
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 }
@@ -17,20 +18,23 @@ else
 	}
 }
 
-
+*/
  //////Message Erreur
  $messageErreurConnexion ='';
+
  if(isset($_POST['email'] , $_POST['mdp'])){
-    $unUtilisateur = new Utilisateur($_POST['email'] , $_POST['mdp']);
+    $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
     $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
     if($_SESSION['identification']){
         $_SESSION['menuPrincipal']="accueil";
     }
     else {
-        $messageErreurConnexion = 'Login ou mot de passe incorrect !';
+        $messageErreurConnexion = 'Email ou mot de passe incorrect !';
     }
  }
- 
+
+/*
+
  echo '5';
 
 
@@ -40,26 +44,19 @@ $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("plat", "Les Plat
 
 echo '2';
 
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Connexion"));
-
-/*
 if(isset($_SESSION['identification']) && $_SESSION['identification']){
     $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("proposer", "Proposer un plat"));
-    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Déconnexion"));
+    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Dï¿½connexion"));
  }
  else{
-    
+    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Connexion"));
  }
- */
- 
+
 echo '3';
 
 $menu = $menuPrincipal->creerMenu('menuPrincipal');
 
-echo $menu;
 echo '4';
 
-
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
-
-
+*/

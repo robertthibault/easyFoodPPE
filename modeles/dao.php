@@ -69,7 +69,7 @@ class DBConnex extends PDO{
 class utilisateurDAO{
 
     public static function verification(Utilisateur $utilisateur){
-        $sql = "select login from Utilisateur where login = '" . $utilisateur->getLogin() . "' and  mdp = '" .  md5($utilisateur->getMdp()) ."'";
+        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $utilisateur->getEmail() . "' and  MOTDEPASSEU = '" .  md5($utilisateur->getMdp()) ."'";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login[0];
     }
@@ -77,9 +77,9 @@ class utilisateurDAO{
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		return $num;
+		return intval($num[0]) + 1;
 	}
-	
+
 	public static function ajouter(Utilisateur $utilisateur){
 	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
                 VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";

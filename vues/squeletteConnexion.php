@@ -1,20 +1,15 @@
 <div id="conteneur">
 
-<div id="header">
-		<?php include 'haut.php' ;?>
+	<div id='header'>
+		<?php //include 'haut.php' ;?>
 	</div>
 
 	<div id="content">
-		<div id="connexion">
-			<div id='boiteConnex'>
-				<div id ='titre'>Veuillez vous identifier</div>	
-				<?php $formulaireConnexion->afficherFormulaire(); ?>
-			</div>
-		</div>
+		<?php include "connexion.php" ?>
 	</div>
 
 	<div id="bas">
-		<?php  include 'bas.php' ;?> 
+		<?php //include 'bas.php' ;?>
 	</div>
-	
+
 </div>

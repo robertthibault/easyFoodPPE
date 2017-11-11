@@ -72,22 +72,23 @@ class Formulaire{
 	}
 
 	/////////// RADIO BOUTON
-	public function creerRadioButton($unNom, $unId, $uneValue){
+	public function creerRadioButton($unNom, $uneValue, $unId){
 		$composant = "<input type = 'radio' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
 				$composant .= "value = '" . $uneValue . "' ";
 		}
+
 		if (!empty($placeholder)){
 				$composant .= "placeholder = '" . $placeholder . "' ";
 		}
 		if ( $required = 1){
 				$composant .= "required";
 		}
-		$composant .= "/>";
+		$composant .= "/> <label for ='" . $uneValue . "'> " . $uneValue . "";
 		return $composant;
 	}
-    //////////////////////////////////////////////////////	
-	
+    //////////////////////////////////////////////////////
+
 	public function creerLabelFor($unFor,  $unLabel){
 		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
 		return $composant;

@@ -3,7 +3,11 @@
 		<?php include 'vues/haut.php' ;?>
 	</header>
 	<div>
-		<p> N'importe quoi ! </p>
+		<?php echo <div>
+
+  <?php echo $menu ?>
+
+</div> ?>
 	</div>
 	<footer>
 		<?php include 'vues/bas.php' ;?>
