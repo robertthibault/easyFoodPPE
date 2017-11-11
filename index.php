@@ -12,7 +12,8 @@ session_start()?>
 	</head>
 	<body>
 		<?php
-			include_once 'controleurs/controleurPrincipal.php';
+			include 'controleurs/controleurPrincipal.php';
 		?>
+		
 	</body>
 </html>

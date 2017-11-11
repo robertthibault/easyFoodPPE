@@ -25,7 +25,7 @@ if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
 }
 else{
     $_SESSION['identification']=array();
-    $_SESSION['menuPrincipalC']="C";
+    $_SESSION['menuPrincipal']="accueil";
     header('location: index.php');
 
 }
