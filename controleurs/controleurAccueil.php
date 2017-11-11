@@ -1,5 +1,3 @@
 <?php
-
-echo 'Bonjour';
-
+  require_once 'vues/squeletteAcceuil.php';
 ?>

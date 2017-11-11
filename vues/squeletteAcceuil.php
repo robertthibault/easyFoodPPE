@@ -1,15 +1,15 @@
 <div class="conteneur">
 	<header>
-		<?php include 'vues/haut.php' ;?>
+		<?php include 'haut.php' ;?>
 	</header>
-	<div>
-		<?php echo <div>
-
-  <?php echo $menu ?>
-
-</div> ?>
-	</div>
+	<main>
+		<div class='texteAccueil'>
+			<h1><span>Présentation d'EasyFood</span></h1>
+			<p>C'est un truc pour la Bouffe</p>
+			<p>Venez acheter</p>
+		</div>
+	</main>
 	<footer>
-		<?php include 'vues/bas.php' ;?>
+		<?php include 'bas.php' ;?>
 	</footer>
 </div>

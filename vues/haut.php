@@ -1,3 +1,7 @@
-<div id ='nav'>
-	<?php $menu -> affichermenu($_SESSION['menuPrincipal']); ?>
+<div class='bandeau'>
+	<div class="logo"></div>
 </div>
+
+<nav class="menuPrincipal">
+	<?php echo $menuPrincipal; ?>
+</nav>
