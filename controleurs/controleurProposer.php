@@ -2,7 +2,12 @@
 
   if (isset($_POST['proposer'])) {
     $plat = new Plat($_POST['resto'], $_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);
-    PlatDAO::ajouter($plat);
+    try {
+      PlatDAO::ajouter($plat);
+      $msg = "Le plat a bien été ajouter.";
+    } catch (Exception $e) {
+      $msg = "Une erreur est survenue.";
+    }
   }
 
   $lesRestos = RestoDAO::lesRestos();
