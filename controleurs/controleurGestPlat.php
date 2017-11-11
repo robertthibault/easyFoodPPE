@@ -6,10 +6,10 @@
   $_SESSION['identification']['IDU'] = 7;
   //Temporaire
   $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
-  $lesPlats = PlatDAO::lesPlatsIdR($sonResto);
+  $lesPlats = PlatDAO::lesPlatsParId($sonResto, 'IDR');
 
   if (isset($_POST['modifier'])) {
-    include_once 'controleurs/controleurProposer.php';
+    include_once 'controleurs/controleurModifPlat.php';
   }
 
   $formulaireGestPlat = new Formulaire('post', 'index.php', 'fGestPlat', '');

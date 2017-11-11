@@ -128,9 +128,10 @@ class RestoDAO{
 
 class PlatDAO{
 
-	public static function lesPlatsIdR($unIdR){
+	//Paramètres : numéro id, nom du champ de la tbale
+	public static function lesPlatsParId($unId, $champ){
 		$result = [];
-		$sql = "SELECT * FROM PLAT WHERE IDR=".$unIdR;
+		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unIdR;
 		echo $sql;
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
