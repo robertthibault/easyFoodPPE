@@ -7,7 +7,7 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 
-require 'controleurs/controleurProposer.php';
+require 'controleurs/controleurGestPlat.php';
 
 /*
 if(isset($_GET['menuPrincipalC'])){

@@ -131,8 +131,7 @@ class PlatDAO{
 	//Paramètres : numéro id, nom du champ de la tbale
 	public static function lesPlatsParId($unId, $champ){
 		$result = [];
-		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unIdR;
-		echo $sql;
+		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $plat){
@@ -157,6 +156,18 @@ class PlatDAO{
 						"')";
 		echo $sql;
 		return DBConnex::getInstance()->insert($sql);
+	}
+
+	public static function modifier(Plat $plat){
+		$sql = "UPDATE plat
+						SET IDR = '" . $plat->getIdR() . "',
+								IDT = '" . $plat->getIdT() . "',
+								NOMP = '" . $plat->getNomP() . "',
+								PRIXFOURNISSEURP = '" . $plat->getPrixFournisseurP() . "',
+								PRIXCLIENTP	= " . $plat->getPrixClientP() . "',
+								DESCRIPTIONP	= " . $plat->getDescriptionP() . "
+						WHERE IDP = " . $plat->getIdP();
+		return DBConnex::getInstance()->update($sql);
 	}
 
 	public static function dernierNumero(){
