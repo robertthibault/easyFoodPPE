@@ -45,8 +45,7 @@ class DBConnex extends PDO{
 
 	public function insert($sql){
 		if ($this->exec($sql) > 0){
-			return 1;
-			//$this->lastInsertId();
+			return true;
 		}
 		return false;
 	}
@@ -73,17 +72,23 @@ class utilisateurDAO{
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 			return intval($num[0]) + 1;
 		}
+
+		public static function sonResto($unIdU){
+			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
+			$resto = DBConnex::getInstance()->queryFetchFirstRow($sql);
+			return $resto[0];
+		}
 }
 
 class TypePlatDAO{
 
 	public static function lesTypesPlats(){
 		$result = [];
-		$sql = "SELECT * FROM TYPE_PLAT ORDER BY LIBELLET;";
+		$sql = "SELECT * FROM TYPE_PLAT;";
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $typePlat){
-				$unTypePlat = new TypePlat($typePlat['LIBELLET']);
+				$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 				$unTypePlat->hydrate($typePlat);
 				$result[] = $unTypePlat;
 			}
@@ -102,7 +107,7 @@ class RestoDAO{
 
 	public static function lesRestos(){
 		$result = [];
-		$sql = "SELECT * FROM RESTO ORDER BY NOMR" ;
+		$sql = "SELECT * FROM RESTO";
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $resto){
@@ -134,6 +139,7 @@ class PlatDAO{
 						"','".$plat->getPlatVisible().
 						"','".$plat->getDescriptionP().
 						"')";
+		echo $sql;
 		return DBConnex::getInstance()->insert($sql);
 	}
 

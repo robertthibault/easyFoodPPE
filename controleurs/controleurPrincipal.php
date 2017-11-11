@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'configs/param.php';
 require_once 'lib/menu.php';
 require_once 'lib/formulaire.php';

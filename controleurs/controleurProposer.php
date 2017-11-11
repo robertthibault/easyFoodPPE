@@ -1,17 +1,21 @@
 <?php
 
+  $_SESSION['identification']['IDU'] = 7;
+  $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
+
   if (isset($_POST['proposer'])) {
-    $plat = new Plat($_POST['resto'], $_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);
-    try {
-      PlatDAO::ajouter($plat);
+    $plat = new Plat($sonResto, $_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);
+    if (PlatDAO::ajouter($plat)){
       $msg = "Le plat a bien été ajouter.";
-    } catch (Exception $e) {
+    }else {
       $msg = "Une erreur est survenue.";
     }
   }
 
   $lesRestos = RestoDAO::lesRestos();
   $lesTypesPLats = TypePlatDAO::lesTypesPlats();
+  $_SESSION['identification']['IDU'] = 7;
+  $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
 
   $formulaireProposer = new Formulaire('post', 'index.php', 'fProposer', '');
 
@@ -20,7 +24,8 @@
   $formulaireProposer->ajouterComposantTab();
 
   $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', 'Resto :'), 1);
-  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerSelectResto('resto', 'resto', 'resto', $lesRestos), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', $sonResto), 1);
+  //$formulaireProposer->ajouterComposantLigne($formulaireProposer->creerSelectResto('resto', 'resto', 'resto', $lesRestos), 1);
   $formulaireProposer->ajouterComposantTab();
 
   $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('typePlat', 'Type de plat :'), 1);
