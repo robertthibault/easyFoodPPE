@@ -9,11 +9,17 @@
   $lesPlats = PlatDAO::lesPlatsParId($sonResto, 'IDR');
 
   if (isset($_POST['modifier'])) {
+    $_SESSION['idPlat'] = $_POST['idPlat'];
     include_once 'controleurs/controleurModifPlat.php';
   }
 
   $formulaireGestPlat = new Formulaire('post', 'index.php', 'fGestPlat', '');
-  $_SESSION['numId'] = 1;
+
+  $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('idPlat', 'Modifier le plat n° : '), 1);
+  $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerInputTexte('idPlat', 'idPlat', '', 1, ''), 1);
+  $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerInputSubmit('modifier', 'modifier', 'Modifier'), 1);
+  $formulaireGestPlat->ajouterComposantTab();
+
   foreach ($lesPlats as $plat) {
 
     if ($plat->getPlatVisible() == 1) {
@@ -22,16 +28,17 @@
       $estVisible = "Non visible";
     }
 
+    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getIdP(), $plat->getIdP()), 1);
+    $formulaireGestPlat->ajouterComposantTab();
+
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getNomP(), $plat->getNomP()), 1);
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getPrixFournisseurP(), $plat->getPrixFournisseurP()."€"), 1);
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getPrixClientP(), $plat->getPrixClientP()."€"), 1);
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($estVisible, $estVisible), 1);
-    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerInputSubmit('modifier', 'modifier', 'Modifier'), 1);
     $formulaireGestPlat->ajouterComposantTab();
 
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getDescriptionP(), $plat->getDescriptionP()), 1);
     $formulaireGestPlat->ajouterComposantTab();
-    $_SESSION['numId']++;
   }
 
   $formulaireGestPlat->creerFormulaire();
