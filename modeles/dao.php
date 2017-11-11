@@ -71,7 +71,7 @@ class utilisateurDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num) + 1;
+			return intval($num[0]) + 1;
 		}
 }
 
@@ -94,7 +94,7 @@ class TypePlatDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDT) FROM TYPE_PLAT;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num) + 1;
+			return intval($num[0]) + 1;
 		}
 }
 
@@ -117,7 +117,7 @@ class RestoDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDR) FROM RESTO;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num) + 1;
+			return intval($num[0]) + 1;
 		}
 }
 
@@ -140,6 +140,6 @@ class PlatDAO{
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDP) FROM PLAT;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		return intval($num) + 1;
+		return intval($num[0]) + 1;
 	}
 }
