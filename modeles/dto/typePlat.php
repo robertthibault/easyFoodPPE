@@ -5,7 +5,7 @@ class TypePlat{
   private $libelleT;
 
   function __construct($unLibelleT){
-    $this->idT = TypePlatDAO::dernierNumero() + 1;
+    $this->idT = TypePlatDAO::dernierNumero();
     $this->libelleT = $unLibelleT;
   }
 

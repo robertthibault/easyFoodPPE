@@ -10,7 +10,7 @@ class Resto{
   private $villeR;
 
   function __construct($unIdU, $unNomR, $unNumAdrr, $uneRueAdrr, $unCpR, $uneVilleR){
-    $this->idR = RestoDAO::dernierNumero() + 1;
+    $this->idR = RestoDAO::dernierNumero();
     $this->idU = $unIdU;
     $this->nomR = $unNomR;
     $this->numAdrr = $unNumAdrr;

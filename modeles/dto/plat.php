@@ -11,22 +11,26 @@ class Plat
   private $platVisible;
   private $descriptionP;
 
-
-
   function __construct($unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
   {
-    $this->idP=platDAO::dernierNumero()+1;
-    $this->idR=$unIdR;
-    $this->idT=$unIdT;
-    $this->nomP=$unNomP;
-    $this->prixFournisseurP=$unPrixFournisseurP;
-    $this->prixClientP=$unPrixClientP;
-    $this->platVisible=$estVisible;
-    $this->descriptionP=$uneDescriptionP;
+    $this->idP = platDAO::dernierNumero();
+    $this->idR = $unIdR;
+    $this->idT = $unIdT;
+    $this->nomP = $unNomP;
+    $this->prixFournisseurP = $unPrixFournisseurP;
+    $this->prixClientP = $unPrixClientP;
+    $this->platVisible = $estVisible;
+    $this->descriptionP = $uneDescriptionP;
 
   }
-  public function getidP(){
+  public function getIdP(){
     return $this->idP;
+  }
+  public function getIdR(){
+    return $this->idR;
+  }
+  public function setIdR($unIdR){
+    $this->idR = $unIdR;
   }
   public function getIdT(){
     return $this->idT;
@@ -59,7 +63,7 @@ class Plat
     $this->platVisible = $estVisible;
   }
   public function getDescriptionP(){
-    return $this->descriptionP
+    return $this->descriptionP;
   }
   public function setDescriptionP($uneDescriptionP){
     $this->descriptionP = $uneDescriptionP;

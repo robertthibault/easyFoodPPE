@@ -5,12 +5,11 @@
 	</div>
 
 	<div id="content">
-		<?php //include "proposer.php" ?>
-		test33
+		<?php include "proposer.php" ?>
 	</div>
 
 	<div id="bas">
-		<?php  //include 'bas.php' ;?>
+		<?php //include 'bas.php' ;?>
 	</div>
 
 </div>

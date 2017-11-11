@@ -4,7 +4,7 @@ class DBConnex extends PDO{
 	private static $instance;
 
 	public static function getInstance(){
-		if ( !self::$instance ){
+		if (!self::$instance){
 			self::$instance = new DBConnex();
 		}
 		return self::$instance;
@@ -15,7 +15,7 @@ class DBConnex extends PDO{
 			parent::__construct(Param::$dsn ,Param::$user, Param::$pass);
 		} catch (Exception $e) {
 			echo $e->getMessage();
-			die("Impossible de se connecter. " );
+			die("Impossible de se connecter.");
 		}
 	}
 
@@ -25,32 +25,26 @@ class DBConnex extends PDO{
 		}
 	}
 
-
 	public function queryFetchAll($sql){
-		$sth  =$this->query($sql);
-
-		if ( $sth ){
-			return $sth -> fetchAll(PDO::FETCH_ASSOC);
+		$sth = $this->query($sql);
+		if ($sth){
+			return $sth->fetchAll(PDO::FETCH_ASSOC);
 		}
-
 		return false;
 	}
 
 
 	public function queryFetchFirstRow($sql){
-		$sth    = $this->query($sql);
-		$result    = array();
-
-		if ( $sth ){
-			$result  = $sth -> fetch();
+		$sth = $this->query($sql);
+		$result = array();
+		if ($sth){
+			$result = $sth->fetch();
 		}
-
 		return $result;
 	}
 
-
 	public function insert($sql){
-		if ( $this -> exec($sql) > 0 ){
+		if ($this->exec($sql) > 0){
 			return 1;
 			//$this->lastInsertId();
 		}
@@ -77,16 +71,15 @@ class utilisateurDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $num;
+			return intval($num) + 1;
 		}
-
 }
 
 class TypePlatDAO{
 
 	public static function lesTypesPlats(){
 		$result = [];
-		$sql = "SELECT * FROM TYPE_PLAT ORDER BY LIBELLLET;";
+		$sql = "SELECT * FROM TYPE_PLAT ORDER BY LIBELLET;";
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $typePlat){
@@ -101,9 +94,8 @@ class TypePlatDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDT) FROM TYPE_PLAT;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $num;
+			return intval($num) + 1;
 		}
-
 }
 
 class RestoDAO{
@@ -114,7 +106,7 @@ class RestoDAO{
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $resto){
-				$unResto = new Resto($resto['IDU'], $resto['NOMR'], $resto['NUMADDR'], $resto['RUEADDR'], $resto['CPR'], $resto['VILLER']);
+				$unResto = new Resto($resto['IDU'], $resto['NOMR'], $resto['NUMADRR'], $resto['RUEADRR'], $resto['CPR'], $resto['VILLER']);
 				$unResto->hydrate($resto);
 				$result[] = $unResto;
 			}
@@ -125,12 +117,13 @@ class RestoDAO{
 		public static function dernierNumero(){
 			$sql = "SELECT MAX(IDR) FROM RESTO;";
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $num;
+			return intval($num) + 1;
 		}
+}
 
 class PlatDAO{
 
-	public function ajouter(Plat $plat){
+	public static function ajouter(Plat $plat){
 		$sql = "INSERT INTO PLAT
 						VALUES ('".$plat->getIdP().
 						"','".$plat->getIdR().
@@ -147,7 +140,6 @@ class PlatDAO{
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDP) FROM PLAT;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		return $num;
+		return intval($num) + 1;
 	}
-
 }

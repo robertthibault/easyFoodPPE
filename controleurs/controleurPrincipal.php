@@ -6,18 +6,11 @@ require_once 'lib/menu.php';
 require_once 'lib/formulaire.php';
 require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
-
-echo 'testy';
-//require_once 'modeles/dao.php';
-
-echo 'testy';
+require_once 'modeles/dao.php';
 
 require 'controleurs/controleurProposer.php';
 
-
 /*
-
-
 if(isset($_GET['menuPrincipalC'])){
 	$_SESSION['menuPrincipalC']= $_GET['menuPrincipalC'];
 }
