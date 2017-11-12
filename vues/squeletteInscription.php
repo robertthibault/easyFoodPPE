@@ -1,19 +1,19 @@
 <div id="conteneur">
 
 <div id="header">
-		<?php //include 'haut.php' ; ?>
+		<?php include 'haut.php' ; ?>
 	</div>
 
 	<div id="content">
 		<div id="inscription">
 				<div id ='titre'>Veuillez vous inscrire</div>
-				<?php include "inscription.php" ?>
+				<?php echo $formulaireInscription->afficherFormulaire(); ?>
 		</div>
 		</div>
 	</div>
 
 	<div id="bas">
-		<?php // include 'bas.php' ;?>
+		<?php include 'bas.php' ;?>
 	</div>
 
 </div>

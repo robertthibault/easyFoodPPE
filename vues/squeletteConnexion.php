@@ -1,15 +1,15 @@
-<div id="conteneur">
+<div classe="conteneur">
+	<header>
+		<?php include 'haut.php' ;?>
+	</header>
 
-	<div id='header'>
-		<?php //include 'haut.php' ;?>
-	</div>
+	<main>
+		<?php echo $formulaireConnexion->afficherFormulaire() ?>
+		<?php echo $formulairePourInscription->afficherFormulaire() ?>
+	</main>
 
-	<div id="content">
-		<?php include "connexion.php" ?>
-	</div>
-
-	<div id="bas">
-		<?php //include 'bas.php' ;?>
-	</div>
+	<footer>
+		<?php include 'bas.php' ;?>
+	</footer>
 
 </div>

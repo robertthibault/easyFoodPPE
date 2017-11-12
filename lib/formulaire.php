@@ -9,7 +9,7 @@ class Formulaire{
 	private $ligneComposants = array();
 	private $tabComposants = array();
 
-	public function __construct($uneMethode, $uneAction , $unNom,$unStyle ){
+	public function __construct($uneMethode, $uneAction , $unNom, $unStyle){
 		$this->method = $uneMethode;
 		$this->action =$uneAction;
 		$this->nom = $unNom;
@@ -121,6 +121,11 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerInputLogo($unNom, $unId, $uneSource){
+		$composant = "<input  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "src = '" . $uneSource . "'/>";
+		return $composant;
+	}
 
 	public function creerFormulaire(){
 		$this->formulaireToPrint = "<form method = '" .  $this->method . "' ";

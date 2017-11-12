@@ -68,8 +68,8 @@ class DBConnex extends PDO{
 
 class utilisateurDAO{
 
-    public static function verification(Utilisateur $utilisateur){
-        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $utilisateur->getEmail() . "' and  MOTDEPASSEU = '" .  md5($utilisateur->getMdp()) ."'";
+    public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
+        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login[0];
     }

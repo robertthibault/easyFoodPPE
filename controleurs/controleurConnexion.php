@@ -1,13 +1,22 @@
 <?php
 
-if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
-
   if(isset($_POST['Valider'])){
-      $_SESSION['identification']=array();
-      require 'controleurAccueil.php';
+    if (isset($_POST['email']) && isset($_POST['mdp'])) {
+      $unUtilisateur = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
+      if($unUtilisateur != NULL){
+        $_SESSION['identification']=array($unUtilisateur);
+        $_SESSION['easyFoodMP']=$_SESSION['dernierePage'];
+        include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
       }
+    }
+  }
 
-    $formulaireConnexion = new Formulaire('post', 'index.php', 'fConnexion', 'fConnexion');
+  if(isset($_POST['inscrire'])){
+    $_SESSION['easyFoodMP']='inscription';
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+  }
+
+    $formulaireConnexion = new Formulaire('post', 'index.php', 'formConnexion', 'Connexion');
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('email', 'Email :'), 1);
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('email', 'email', '' , 1, '',0),1);
     $formulaireConnexion->ajouterComposantTab();
@@ -24,14 +33,19 @@ if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
 
     $formulaireConnexion->creerFormulaire();
 
-    include_once 'vues/squeletteConnexion.php';
+    $formulairePourInscription = new Formulaire('post', 'index.php', 'formulairePourInscription', 'PourInscription');
+    $formulairePourInscription->ajouterComposantLigne($formulairePourInscription->creerInputSubmit('inscrire', 'inscrire', 'Pas encore inscrit ?'),2);
+    $formulairePourInscription->ajouterComposantTab();
+    $formulairePourInscription->creerFormulaire();
 
-}
+    include 'vues/squeletteConnexion.php';
+/*
 else{
     $_SESSION['identification']=array();
-    $_SESSION['menuPrincipal']="accueil";
+    $_SESSION['menuPrincipal']="Accueil";
     header('location: index.php');
 
 }
+*/
 
 ?>

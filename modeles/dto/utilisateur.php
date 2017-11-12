@@ -1,6 +1,6 @@
 <?php
 class Utilisateur{
-  
+
   private $idU;
   private $civilite;
   private $nom;
@@ -36,9 +36,13 @@ class Utilisateur{
   }
 
   //Les accesseurs
-  
+
     public function getId(){
         return $this->idU;
+    }
+
+    public function setId($unId){
+      $this->idU-> $unId;
     }
   //////
       public function getCivilite(){
