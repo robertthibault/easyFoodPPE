@@ -6,9 +6,16 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 
+require 'controleurs/controleurGestPlat.php';
+
+
+/*
+if(isset($_GET['menuPrincipalC'])){
+	$_SESSION['menuPrincipalC']= $_GET['menuPrincipalC'];
 
 if(isset($_GET['menuPrincipal'])){
 	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
+
 }
 else
 {
@@ -45,7 +52,7 @@ $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Con
 /*
 if(isset($_SESSION['identification']) && $_SESSION['identification']){
     $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("proposer", "Proposer un plat"));
-    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Déconnexion"));
+    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "DÃ©connexion"));
  }
  else{
     
@@ -62,4 +69,6 @@ echo '4';
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 
+include_once dispatcher::dispatch($_SESSION['menuPrincipalC']);
 
+*/
