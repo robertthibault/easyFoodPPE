@@ -36,6 +36,11 @@ class Utilisateur{
   }
 
   //Les accesseurs
+  
+    public function getId(){
+        return $this->idU;
+    }
+  //////
       public function getCivilite(){
           return $this->civilite;
       }

@@ -72,6 +72,12 @@ class utilisateurDAO{
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 			return intval($num[0]) + 1;
 		}
+	
+	public static function ajouter(Utilisateur $utilisateur){
+	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
+                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
+	    return DBConnex::getInstance()->insert($sql);
+	}
 
 		public static function sonResto($unIdU){
 			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
