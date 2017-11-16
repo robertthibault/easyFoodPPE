@@ -37,7 +37,7 @@ else
         $messageErreurConnexion = 'Login ou mot de passe incorrect !';
     }
  }
- 
+
  echo '5';
 
 
@@ -55,10 +55,10 @@ if(isset($_SESSION['identification']) && $_SESSION['identification']){
     $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Déconnexion"));
  }
  else{
-    
+
  }
  */
- 
+/*
 echo '3';
 
 $menu = $menuPrincipal->creerMenu('menuPrincipal');
@@ -70,5 +70,4 @@ echo '4';
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 
 include_once dispatcher::dispatch($_SESSION['menuPrincipalC']);
-
 */
