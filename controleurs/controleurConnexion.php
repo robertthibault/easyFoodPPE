@@ -39,13 +39,5 @@
     $formulairePourInscription->creerFormulaire();
 
     include 'vues/squeletteConnexion.php';
-/*
-else{
-    $_SESSION['identification']=array();
-    $_SESSION['menuPrincipal']="Accueil";
-    header('location: index.php');
-
-}
-*/
 
 ?>

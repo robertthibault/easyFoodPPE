@@ -6,7 +6,7 @@ require_once 'lib/formulaire.php';
 require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
-require 'controleurConnexion.php';
+require 'controleurInscription.php';
 
 
 /*----------------------------------------------------------*/

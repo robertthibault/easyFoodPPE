@@ -9,19 +9,27 @@ if(isset($_POST['inscrire'])){
   		&& isset($_POST['mdp'])
       && isset($_POST['mdp2'])){
         if($_POST['mdp'] == $_POST['mdp2']) {
-          $utilisateur = new Utilisateur();
-          $utilisateur->setCivilite($_POST['civilite']);
-          $utilisateur->setNom($_POST['nom']);
-          $utilisateur->setPrenom($_POST['prenom']);
-          $utilisateur->setEmail($_POST['email']);
-          $utilisateur->setMdp($_POST['mdp']);
-          $utilisateur->setTypeU($_POST['typeU']);
+          $utilisateur = new Utilisateur(
+          utilisateurDAO::dernierNumero(),
+          $_POST['civilite'],
+          $_POST['nom'],
+          $_POST['prenom'],
+          $_POST['email'],
+          $_POST['mdp'],
+          $_POST['typeU'],
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "");
           utilisateurDAO::ajouter($utilisateur);
           $_SESSION['easyFoodMP']="Accueil";
         }
     }
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
   }
-  include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 
 $formulaireInscription = new Formulaire('post', 'index.php', 'formInscription', 'inscription');
 
@@ -56,7 +64,7 @@ $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInput
 $formulaireInscription->ajouterComposantTab();
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputSubmit("inscrire", "inscrire", "inscrire"),1);;
-$formulaireInscription->ajouterComposantTab(); 
+$formulaireInscription->ajouterComposantTab();
 
 
 $formulaireInscription->creerFormulaire();

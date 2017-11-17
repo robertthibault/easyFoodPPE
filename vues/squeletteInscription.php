@@ -6,7 +6,7 @@
 
 	<div id="content">
 		<div id="inscription">
-				<div id ='titre'>Veuillez vous inscrire</div>
+				<p id ='titre'>Veuillez vous inscrire</p>
 				<?php echo $formulaireInscription->afficherFormulaire(); ?>
 		</div>
 		</div>
