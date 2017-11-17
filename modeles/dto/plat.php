@@ -64,8 +64,7 @@ class Plat
   }
   public function getDescriptionP(){
     return $this->descriptionP;
-  }
-  
+  }  
   public function setDescriptionP($uneDescriptionP){
     $this->descriptionP = $uneDescriptionP;
   }
