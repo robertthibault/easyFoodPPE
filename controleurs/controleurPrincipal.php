@@ -37,14 +37,13 @@ else{
         $messageErreurConnexion = 'Email ou mot de passe incorrect !';
     }
  }
-*/
+ 
 /*
 $easyFoodMP = new Menu("menuP");
 
  if (!isset($_SESSION['identification'])) {
  	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('connexion',"Connexion"));
- }
- else {
+ }else {
  $easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identification'][1] . $_SESSION['identification'][2] . $_SESSION['identification'][3]));
  }
 

@@ -2,7 +2,7 @@
 
   <?php
     echo "Les plats de : " . $_SESSION['identification']['PRENOMU'] . " " . $_SESSION['identification']['NOMU'];
-    echo $formulaireGestPlat->afficherFormulaire();
+    $formulaireGestPlat->afficherFormulaire();
   ?>
 
 </div>

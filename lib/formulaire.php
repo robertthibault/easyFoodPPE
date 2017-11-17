@@ -88,24 +88,9 @@ class Formulaire{
 		return $composant;
 	}
 
-    //////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
 	public function creerLabelFor($unFor,  $unLabel){
 		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
-		return $composant;
-	}
-
-	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options){
-		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
-		$i = 0;
-		foreach ($options as $option){
-			$composant .= "<option value = '";
-			$tab = $options[$i];
-			$composant .= $tab->getIdT();
-			$i++;
-			$composant .= "'> " . $tab->getLibelleT();
-			$composant .= "</option>";
-		}
-		$composant .= "</select></td></tr>";
 		return $composant;
 	}
 
@@ -119,6 +104,21 @@ class Formulaire{
 			$i++;
 			$composant .= "'> " . $tab->getNomR();
 			$composant .= "</option>";
+		}
+		$composant .= "</select></td></tr>";
+		return $composant;
+	}
+
+	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options, $selected){
+		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+		$i = 0;
+		foreach ($options as $option) {
+			$i++;
+			$composant .= "<option value = '" . $option->getIdT() ."' ";
+			if ($i == $selected) {
+				$composant .= "selected='selected' ";
+			}
+			$composant .= ">" . $option->getLibelleT() . "</option>";
 		}
 		$composant .= "</select></td></tr>";
 		return $composant;

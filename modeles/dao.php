@@ -137,20 +137,34 @@ class RestoDAO{
 }
 class PlatDAO{
 
-	//Paramètres : numéro id, nom du champ de la tbale
+	//Paramètres : numéro id, nom du champ de la table
 	public static function lesPlatsParId($unId, $champ){
 		$result = [];
 		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $plat){
-				$unPlat = new Plat(PlatDAO::dernierNumero(), $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+				$unPlat = new Plat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
 				$unPlat->hydrate($plat);
 				$result[] = $unPlat;
 			}
 		}
 		return $result;
 	}
+
+	public static function lePlatParId($unId, $champ){
+		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
+		$plat = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$unPlat = new Plat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+		return $unPlat;
+	}
+
+	public static function sonTypePlat($unIdT){
+		$sql = "SELECT * FROM type_plat WHERE IDT=".$unIdT;
+		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
+		return $unTypePlat;
+		}
 
 	public static function ajouter(Plat $plat){
 		$sql = "INSERT INTO PLAT
@@ -163,7 +177,6 @@ class PlatDAO{
 						"','".$plat->getPlatVisible().
 						"','".$plat->getDescriptionP().
 						"')";
-		echo $sql;
 		return DBConnex::getInstance()->insert($sql);
 	}
 
