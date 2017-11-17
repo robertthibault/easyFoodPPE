@@ -9,8 +9,9 @@
   $lesPlats = PlatDAO::lesPlatsParId($sonResto, 'IDR');
 
   if (isset($_POST['modifier'])) {
-    $_SESSION['idPlat'] = $_POST['idPlat'];
-    include_once 'controleurs/controleurModifPlat.php';
+    $_SESSION['easyFoodMP']='ModifPlat';
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+    //include_once 'controleurs/controleurModifPlat.php';
   }
 
   $formulaireGestPlat = new Formulaire('post', 'index.php', 'fGestPlat', '');
