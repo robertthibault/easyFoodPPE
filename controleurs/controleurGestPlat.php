@@ -22,7 +22,7 @@
   $formulaireGestPlat->ajouterComposantTab();
 
   foreach ($lesPlats as $plat) {
-    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('', '- - - - - - - - - - - - - - - - - - - - - - - - - -'), 1);
+    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('', '- - - - - - - - - - - - - - - - - - - - - - - -'), 1);
     $formulaireGestPlat->ajouterComposantTab();
     if ($plat->getPlatVisible() == 1) {
       $estVisible = "Visible";

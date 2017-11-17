@@ -5,7 +5,7 @@
       $unUtilisateur = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
       if($unUtilisateur != NULL){
         $_SESSION['identification']=array($unUtilisateur);
-        $_SESSION['easyFoodMP']=$_SESSION['dernierePage'];
+        $_SESSION['easyFoodMP']='Proposer';
         include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
       }
     }
