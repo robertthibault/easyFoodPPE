@@ -115,10 +115,9 @@ class Formulaire{
 			$i++;
 			$composant .= "<option value = '" . $option->getIdT() ."' ";
 			if ($i == $selected) {
-				$composant .= "selected='selected'>";
+				$composant .= "selected='selected' ";
 			}
-			echo $i;
-			$composant .= $option->getLibelleT() . "</option>";
+			$composant .= ">" . $option->getLibelleT() . "</option>";
 		}
 		$composant .= "</select></td></tr>";
 		return $composant;

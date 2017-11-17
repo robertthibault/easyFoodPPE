@@ -18,10 +18,6 @@
 
   $formulaireModifPlat = new Formulaire('post', 'index.php', 'fModifPlat', '');
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('nom', 'Numéro :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('id', 'id', $unPlat->getIdP(), 1, ''), 1);
-  $formulaireModifPlat->ajouterComposantTab();
-
   $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('nom', 'Nom :'), 1);
   $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('nom', 'nom', $unPlat->getNomP(), 1, ''), 1);
   $formulaireModifPlat->ajouterComposantTab();
@@ -46,6 +42,7 @@
   $formulaireModifPlat->ajouterComposantTab();
 
   $formulaireModifPlat->creerFormulaire();
+
 
   include_once "vues/squeletteModifPlat.php";
 
