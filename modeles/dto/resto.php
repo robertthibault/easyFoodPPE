@@ -10,7 +10,7 @@ class Resto{
   private $villeR;
 
   function __construct($unIdU, $unNomR, $unNumAdrr, $uneRueAdrr, $unCpR, $uneVilleR){
-    $this->idR = RestoDAO::dernierNumero() + 1;
+    $this->idR = RestoDAO::dernierNumero();
     $this->idU = $unIdU;
     $this->nomR = $unNomR;
     $this->numAdrr = $unNumAdrr;
@@ -58,6 +58,15 @@ class Resto{
   public function setVilleR($uneVilleR){
     $this->villeR = $uneVilleR;
   }
+
+  public function hydrate(array $donnees){
+		foreach ($donnees as $key => $value){
+			$method = 'set'.ucfirst($key);
+			if (method_exists($this, $method)){
+				$this->$method($value);
+			}
+		}
+	}
 
 }
 

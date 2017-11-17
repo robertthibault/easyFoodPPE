@@ -1,5 +1,4 @@
 <?php
-
 require_once 'configs/param.php';
 require_once 'lib/menu.php';
 require_once 'lib/formulaire.php';
@@ -7,6 +6,8 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 require 'controleurInscription.php';
+
+require 'controleurs/controleurGestPlat.php';
 
 
 /*----------------------------------------------------------*/
@@ -27,6 +28,7 @@ else{
  $messageErreurConnexion ='';
  if(isset($_POST['email'] , $_POST['mdp'])){
     $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
+
     $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
     if($_SESSION['identification']){
         $_SESSION['menuPrincipal']="accueil";

@@ -11,18 +11,18 @@ class Formulaire{
 
 	public function __construct($uneMethode, $uneAction , $unNom, $unStyle){
 		$this->method = $uneMethode;
-		$this->action =$uneAction;
+		$this->action = $uneAction;
 		$this->nom = $unNom;
 		$this->style = $unStyle;
 	}
 
 
-	public function concactComposants($unComposant , $autreComposant ){
+	public function concactComposants($unComposant ,$autreComposant){
 		$unComposant .=  $autreComposant;
 		return $unComposant ;
 	}
 
-	public function ajouterComposantLigne($unComposant , $unNbCols ){
+	public function ajouterComposantLigne($unComposant ,$unNbCols){
 		$temp = "<td";
 		if($unNbCols > 1){
 			$temp .= " colspan ='" . $unNbCols ."' ";
@@ -87,22 +87,37 @@ class Formulaire{
 		$composant .= "/> <label for ='" . $uneValue . "'> " . $uneValue . "";
 		return $composant;
 	}
-    //////////////////////////////////////////////////////
 
+    //////////////////////////////////////////////////////
 	public function creerLabelFor($unFor,  $unLabel){
 		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
 		return $composant;
 	}
 
-	public function creerSelect($unNom, $unId, $unLabel, $options){
+	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options){
 		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
 		$i = 0;
 		foreach ($options as $option){
-			$composant .= "<option value = '" ;
+			$composant .= "<option value = '";
 			$tab = $options[$i];
-			$composant .= $tab->getIdEquipe();
+			$composant .= $tab->getIdT();
 			$i++;
-			$composant .= "'> " . $tab->getNomEquipe();
+			$composant .= "'> " . $tab->getLibelleT();
+			$composant .= "</option>";
+		}
+		$composant .= "</select></td></tr>";
+		return $composant;
+	}
+
+	public function creerSelectResto($unNom, $unId, $unLabel, $options){
+		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+		$i = 0;
+		foreach ($options as $option){
+			$composant .= "<option value = '";
+			$tab = $options[$i];
+			$composant .= $tab->getIdR();
+			$i++;
+			$composant .= "'> " . $tab->getNomR();
 			$composant .= "</option>";
 		}
 		$composant .= "</select></td></tr>";

@@ -6,27 +6,31 @@ class Plat
   private $idR;
   private $idT;
   private $nomP;
-  private $prixFrounisseurP;
+  private $prixFournisseurP;
   private $prixClientP;
   private $platVisible;
   private $descriptionP;
 
-
-
-  function __construct($unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
+  function __construct($unIdP,$unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
   {
-    $this->idP=platDAO::dernierNumero()+1;
-    $this->idR=$unIdR;
-    $this->idT=$unIdT;
-    $this->nomP=$unNomP;
-    $this->prixFournisseurP=$unPrixFournisseurP;
-    $this->prixClientP=$unPrixClientP;
-    $this->platVisible=$estVisible;
-    $this->descriptionP=$uneDescriptionP;
+    $this->idP = $unIdP;
+    $this->idR = $unIdR;
+    $this->idT = $unIdT;
+    $this->nomP = $unNomP;
+    $this->prixFournisseurP = $unPrixFournisseurP;
+    $this->prixClientP = $unPrixClientP;
+    $this->platVisible = $estVisible;
+    $this->descriptionP = $uneDescriptionP;
 
   }
-  public function getidP(){
+  public function getIdP(){
     return $this->idP;
+  }
+  public function getIdR(){
+    return $this->idR;
+  }
+  public function setIdR($unIdR){
+    $this->idR = $unIdR;
   }
   public function getIdT(){
     return $this->idT;
@@ -65,9 +69,15 @@ class Plat
     $this->descriptionP = $uneDescriptionP;
   }
 
+  public function hydrate(array $donnees){
+		foreach ($donnees as $key => $value){
+			$method = 'set'.ucfirst($key);
+			if (method_exists($this, $method)){
+				$this->$method($value);
+			}
+		}
+	}
+
 }
-
-
-
 
  ?>
