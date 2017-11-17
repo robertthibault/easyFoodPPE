@@ -9,26 +9,20 @@ if(isset($_POST['inscrire'])){
   		&& isset($_POST['mdp'])
       && isset($_POST['mdp2'])){
         if($_POST['mdp'] == $_POST['mdp2']) {
-          $utilisateur = new Utilisateur(
-          utilisateurDAO::dernierNumero(),
-          $_POST['civilite'],
-          $_POST['nom'],
-          $_POST['prenom'],
-          $_POST['email'],
-          $_POST['mdp'],
-          $_POST['typeU'],
-          "",
-          "",
-          "",
-          "",
-          "",
-          "",
-          "");
-          utilisateurDAO::ajouter($utilisateur);
-          $_SESSION['easyFoodMP']="Accueil";
+          $utilisateur = new Utilisateur(utilisateurDAO::dernierNumero(), $_POST['civilite'], $_POST['nom'], $_POST['prenom'], $_POST['email'], md5($_POST['mdp']), $_POST['typeU'],
+          null, null, null, null, null, null, null);
+          if (utilisateurDAO::ajouter($utilisateur)){
+            $msg = "Vous avez bien été inscrit.";
+          }else {
+            $msg = "Une erreur est survenue.";
+          }}  
+        else{
+          $msg = "Les deux mots de passe doivent correspondre.";
         }
+        //  $_SESSION['easyFoodMP']="Accueil";
+
     }
-    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+    //include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
   }
 
 $formulaireInscription = new Formulaire('post', 'index.php', 'formInscription', 'inscription');

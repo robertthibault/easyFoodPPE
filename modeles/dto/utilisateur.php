@@ -16,7 +16,7 @@ class Utilisateur{
   private $codePostale;
   private $ville;
 
-  public function __construct($unIdU, $uneCivilite, $unNom, $unPrenom, $unEmail, $unTypeU, $unMdp, $uneNoteAEasyFood, $unCommentaireAEasyFood, $unCommentaireAEasyFoodVisible, $unNumAdresse, $uneRueAdresse, $unCodePostale, $uneVille){
+  public function __construct($unIdU, $uneCivilite, $unNom, $unPrenom, $unEmail, $unMdp, $unTypeU, $uneNoteAEasyFood, $unCommentaireAEasyFood, $unCommentaireAEasyFoodVisible, $unNumAdresse, $uneRueAdresse, $unCodePostale, $uneVille){
 
       $this->idU  = $unIdU;
       $this->civilite = $uneCivilite;

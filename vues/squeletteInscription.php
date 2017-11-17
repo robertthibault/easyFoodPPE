@@ -7,7 +7,11 @@
 	<div id="content">
 		<div id="inscription">
 				<p id ='titre'>Veuillez vous inscrire</p>
-				<?php echo $formulaireInscription->afficherFormulaire(); ?>
+				<?php $formulaireInscription->afficherFormulaire();
+				if(isset($msg)){
+					echo $msg;
+				}?>
+
 		</div>
 		</div>
 	</div>

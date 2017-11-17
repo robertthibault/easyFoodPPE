@@ -81,15 +81,14 @@ class utilisateurDAO{
 	}
 
 	public static function ajouter(Utilisateur $utilisateur){
-	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU,
-				EMAILU, MOTDEPASSEU, TYPEU,
-				NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
+	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
                 VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
-								. $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "','"
-								. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
-								"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille() . "')";
+								. $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
 	    return DBConnex::getInstance()->insert($sql);
 	}
+	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
+	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
+	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
 
 }
 
