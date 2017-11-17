@@ -3,7 +3,7 @@
   $unPlat = PlatDAO::lePlatParId($_SESSION['idPlat'], 'IDP');
   $lesTypesPLats = TypePlatDAO::lesTypesPlats();
 
-  if (isset($_POST['modifier'])) {
+  if (isset($_POST['modifierPlat'])) {
     $unPlat->setNomP($_POST['nom']);
     $unPlat->setIdT($_POST['typePlat']);
     $unPlat->setPrixFournisseurP($_POST['prixF']);
@@ -38,7 +38,7 @@
   $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('description', 'description', $unPlat->getDescriptionP(), 1, ''), 1);
   $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputSubmit('modifier', 'modifier', "Modifier"), 1);
+  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputSubmit('modifierPlat', 'modifierPlat', "Modifier"), 1);
   $formulaireModifPlat->ajouterComposantTab();
 
   $formulaireModifPlat->creerFormulaire();

@@ -43,7 +43,7 @@
 
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getPrixFournisseurP(), "Prix fournisseur : " . $plat->getPrixFournisseurP()."€"), 1);
     $formulaireGestPlat->ajouterComposantTab();
-    
+
     $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor($plat->getPrixClientP(), "Prix client : " . $plat->getPrixClientP()."€"), 1);
     $formulaireGestPlat->ajouterComposantTab();
 
