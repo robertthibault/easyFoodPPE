@@ -6,7 +6,7 @@
 		$formLogo->ajouterComposantTab();
 		$formLogo->creerFormulaire();
 
-		echo $menuPrincipal;
+		echo $easyFoodMP->creerMenu($_SESSION['easyFoodMP']);
 		echo $formLogo->afficherFormulaire();
 	?>
 	<hr id="separateur_menuP">

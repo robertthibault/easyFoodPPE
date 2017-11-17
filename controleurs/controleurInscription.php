@@ -15,7 +15,7 @@ if(isset($_POST['inscrire'])){
             $msg = "Vous avez bien Ã©tÃ© inscrit.";
           }else {
             $msg = "Une erreur est survenue.";
-          }}  
+          }}
         else{
           $msg = "Les deux mots de passe doivent correspondre.";
         }
@@ -41,7 +41,7 @@ $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadio
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("civilite", "Mme", "Mme"), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("typeU", "Vous Ãªtes ?"), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("typeU", "Vous êtes ?"), 1);
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "restaurateur", "restaurateur"), 1);
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "client", "client"), 1);
 $formulaireInscription->ajouterComposantTab();
