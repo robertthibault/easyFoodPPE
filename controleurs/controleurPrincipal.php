@@ -6,20 +6,18 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 
-require_once 'controleurs/controleurConnexion.php';
-
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut----------------------*/
 /*----------------------------------------------------------*/
-/*
 if(isset($_GET['easyFoodMP'])){
 	$_SESSION['easyFoodMP']= $_GET['easyFoodMP'];
 }
 else{
 	if(!isset($_SESSION['easyFoodMP'])){
-		$_SESSION['easyFoodMP']="Accueil";
+		$_SESSION['easyFoodMP']="GestPlat";
 	}
 }
+/*
 
  //////Message Erreur
  $messageErreurConnexion ='';
@@ -45,7 +43,7 @@ $easyFoodMP = new Menu("menuP");
  }
 
 $menuPrincipal = $easyFoodMP->creerMenu('easyFoodMP');
+*/
 
 include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
-*/
 ?>

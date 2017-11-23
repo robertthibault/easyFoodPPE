@@ -12,6 +12,7 @@
   if (isset($_POST['modifier'])) {
     foreach ($lesPlats as $plat) {
       if($_POST['idPlat'] == $plat->getIdP()){
+        $_SESSION['easyFoodMP']="ModifPlat";
         include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
         break;
       }else{

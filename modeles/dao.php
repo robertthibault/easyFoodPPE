@@ -135,6 +135,7 @@ class RestoDAO{
 			return intval($num[0]) + 1;
 		}
 }
+
 class PlatDAO{
 
 	//Paramètres : numéro id, nom du champ de la table
