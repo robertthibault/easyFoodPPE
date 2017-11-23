@@ -13,9 +13,9 @@ class Menu{
 		$this->composants[] = $unComposant;
 	}
 
-	
-	
-	
+
+
+
 	public function creerItemImage($uneValue,$uneImage,$uneEtiquette){
 		$composant = array();
 		$composant[0] = $uneValue ;
@@ -23,13 +23,13 @@ class Menu{
 		$composant[2] = $uneEtiquette ;
 		return $composant;
 	}
-	
-	
-	
+
+
+
 	public function afficherMenu($composantActif){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
-			
+
 			if($composant[0] == $composantActif){
 				$menu .= "<li class='actif'>";
 				//$menu .= "<img src = '" . $composant[1] . "' />";
@@ -43,12 +43,12 @@ class Menu{
 				$menu .= "<br/><span>" . $composant[2] . "</span>";
 			}
 			$menu .= "</li>";
-			
+
 		}
 		$menu .= "</ul>";
 		echo $menu ;
 	}
-	
+
 
 	public function creerItemLien($unLien,$uneValeur){
 		$composant = array();
@@ -56,12 +56,12 @@ class Menu{
 		$composant[0] = $uneValeur ;
 		return $composant;
 	}
-	
+
 	public function creerMenu($composantActif){
 		$menu = "<ul class = '" .  $this->style . "'>";
 		foreach($this->composants as $composant){
 				$menu .= "<li>";
-				$menu .= "<a href='index.php?". $nomMenu ;
+				$menu .= "<a href='index.php?". $menu ;
 				$menu .= "=" .$composant[0] . "' >";
 				$menu .= "<span>" . $composant[1] ."</span>";
 				$menu .= "</a>";

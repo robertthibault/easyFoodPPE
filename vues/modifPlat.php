@@ -2,7 +2,7 @@
 
   <?php
     echo "Modifier les informations de votre plat :";
-    echo $formulaireModifPlat->afficherFormulaire();
+    $formulaireModifPlat->afficherFormulaire();
   ?>
 
 </div>

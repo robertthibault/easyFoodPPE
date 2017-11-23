@@ -1,5 +1,11 @@
-<div id ='nav'>
+<nav class="menuPrincipal">
 	<?php
-		$menu->affichermenu($_SESSION['menuPrincipal']);
+		$formLogo = new Formulaire("post","index.php?menuPrincipal=Accueil","formLogo","formLogo");
+		$formLogo->ajouterComposantLigne($formLogo->creerInputLogo("logo","logo","images\logo.png"));
+		$formLogo->ajouterComposantTab();
+		$formLogo->creerFormulaire();
+		echo $menuPrincipal;
+		echo $formLogo->afficherFormulaire();
 	?>
-</div>
+	<hr id="separateur_menuP">
+</nav>

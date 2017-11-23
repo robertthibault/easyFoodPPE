@@ -61,23 +61,27 @@ class DBConnex extends PDO{
 
 class utilisateurDAO{
 
-    public static function verification(Utilisateur $utilisateur){
-        $sql = "select login from Utilisateur where login = '" . $utilisateur->getLogin() . "' and  mdp = '" .  md5($utilisateur->getMdp()) ."'";
+    public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
+        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login[0];
     }
 
-		public static function dernierNumero(){
-			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
-			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num[0]) + 1;
-		}
+	public static function dernierNumero(){
+		$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		return intval($num[0]) + 1;
+	}
 
 	public static function ajouter(Utilisateur $utilisateur){
 	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
-                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
+                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
+								. $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
 	    return DBConnex::getInstance()->insert($sql);
 	}
+	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
+	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
+	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
 
 		public static function sonResto($unIdU){
 			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
@@ -131,7 +135,6 @@ class RestoDAO{
 			return intval($num[0]) + 1;
 		}
 }
-
 class PlatDAO{
 
 	//Paramètres : numéro id, nom du champ de la table
@@ -174,7 +177,6 @@ class PlatDAO{
 						"','".$plat->getPlatVisible().
 						"','".$plat->getDescriptionP().
 						"')";
-		echo $sql;
 		return DBConnex::getInstance()->insert($sql);
 	}
 
@@ -196,3 +198,22 @@ class PlatDAO{
 		return intval($num[0]) + 1;
 	}
 }
+/*
+class CommentaireDAO{
+	  public static function selectCommentaire()
+	  {
+	    $sql = "SELECT C.MAIL, R.NOMR, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, `NOTECOUT`, `COMMENTAIRE` FROM `evaluer` AS E, `client` AS C, `resto` AS R WHERE R.IDR = E.IDR AND C.IDU = E.IDU";
+	    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+	    if (count($liste) > 0)
+	    {
+	      foreach ($liste as $note)
+	      {
+	        $uneNote = new Evaluer($note['MAIL'], $note['NOMR'], $note['NOTERAPIDITE'],
+	                              $note['NOTEQUALITE'], $note['NOTETEMP'],
+	                              $note['NOTECOUT'], $note['COMMENTAIRE']);
+	        $result[] = $uneNote;
+	      }
+	    }
+	    return $result;
+	  }
+	}*/
