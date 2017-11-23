@@ -152,12 +152,12 @@ class PlatDAO{
 	public static function lePlatParId($unId, $champ){
 		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
 		$plat = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		$unPlat = new TypePlat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+		$unPlat = new Plat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
 		return $unPlat;
 	}
 
 	public static function sonTypePlat($unIdP){
-		$sql = "SELECT * FROM type_plat WHERE IDP=".$unIdP;
+		$sql = "SELECT * FROM type_plat, plat WHERE IDP=". $unIdP . " AND plat.IDT=type_plat.IDT";
 		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $unTypePlat;
