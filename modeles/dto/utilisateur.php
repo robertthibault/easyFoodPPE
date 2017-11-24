@@ -1,6 +1,6 @@
 <?php
 class Utilisateur{
-  
+
   private $idU;
   private $civilite;
   private $nom;
@@ -18,7 +18,7 @@ class Utilisateur{
 
   public function __construct($uneCivilite, $unNom, $unPrenom, $unEmail, $unTypeU, $unMdp, $uneNoteAEasyFood, $unCommentaireAEasyFood, $unCommentaireAEasyFoodVisible, $unNumAdresse, $uneRueAdresse, $unCodePostale, $uneVille){
 
-      $this->idU  = utilisateurDAO::dernierNumero() + 1;
+      $this->idU  = utilisateurDAO::dernierNumero();
       $this->civilite = $uneCivilite;
       $this->nom = $unNom;
       $this->prenom = $unPrenom;
@@ -36,6 +36,11 @@ class Utilisateur{
   }
 
   //Les accesseurs
+  
+    public function getId(){
+        return $this->idU;
+    }
+  //////
       public function getCivilite(){
           return $this->civilite;
       }

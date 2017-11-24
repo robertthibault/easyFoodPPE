@@ -1,5 +1,5 @@
 <div id ='nav'>
 	<?php
-		$menuPrincipal->affichermenu($_SESSION['menuPrincipalC']);
+		$menu->affichermenu($_SESSION['menuPrincipal']);
 	?>
 </div>
