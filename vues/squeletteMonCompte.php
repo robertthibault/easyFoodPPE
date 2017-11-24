@@ -6,7 +6,8 @@
 
 	<div id="content">
 		<div id="formUniforme">
-				<?php $formulaireInscription->afficherFormulaire();
+				<p id ='titre'>Veuillez modifier vos informations</p>
+				<?php $formulaireMonCompte->afficherFormulaire();
 				if(isset($msg)){
 					echo $msg;
 				}?>

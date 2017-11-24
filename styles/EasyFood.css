@@ -151,10 +151,10 @@ nav.menuPrincipal ul li .actif {
   padding-bottom: 100px;
 }
 /****************************************************/
-/*styles pour le formulaire d'inscription           */
+/*styles pour le formulaire généralisé           */
 /****************************************************/
 
-.inscription{
+.formUniforme{
 	margin-top: 8%;
 	margin-left:35%;
 	height: 100px;
@@ -162,7 +162,7 @@ nav.menuPrincipal ul li .actif {
 	display: inline-block;
 }
 
-.inscription input{
+.formUniforme input{
 	background-color: #FAFAFA;
 	border-style: solid;
 	margin-top: 10px;
@@ -177,105 +177,12 @@ nav.menuPrincipal ul li .actif {
 	height: 25px;
 }
 
-.inscription input[type='submit']:hover{
+.formUniforme input[type='submit']:hover{
 	background-color: #E6E6E6;
 	border-style: solid;
 	border-width: 2px;
 	border-color: red;
 	font-size: 14px;
-	letter-spacing: 2px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-
-/****************************************************/
-/*styles pour le formulaire de connexion            */
-/****************************************************/
-
-.contentConnexion{
-	margin-top: 10%;
-	margin-left:35%;
-	height: 100px;
-	z-index: 10;
-	display: inline-block;
-}
-
-.contentConnexion .btnIdent{
-	margin-top: 20px;
-}
-
-.contentConnexion .btn input{
-	background-color: #FAFAFA;
-  border-style: solid;
-	margin-top: 10px;
-	margin-left: 20px;
-  border-width: 2px;
-  border-color: orange;
-	text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: BLACK;
-	border-radius: 10px;
-	width: 400px;
-	height: 40px;
-}
-
-.contentConnexion .btn input[type='submit']:hover{
-	background-color: #E6E6E6;
-	border-style: solid;
-	border-width: 2px;
-	border-color: red;
-	font-size: 14px;
-	letter-spacing: 1px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-.contentConnexion .btn #deconexion{
-	width: 400px;
-			text-transform: uppercase;
-}
-.contentConnexion .btn #inscription{
-	width: 400px;
-			text-transform: uppercase;
-}
-
-.contentConnexion .btn a{
-	font-size: 10px;
-	text-transform: uppercase;
-	background-color: #F5ECCE;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	letter-spacing: 2px;
-	color: BLACK;
-	margin: 60px;
-}
-
-
-.contentConnexion .btn input[type='reset']{
-		width: 193px;
-		text-transform: uppercase;
-}
-
-.contentConnexion .btn input[type='submit']:hover{
-	background-color: #F4FA58;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	font-size: 16px;
-	letter-spacing: 2px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-.contentConnexion .btnIdent input[type='reset']:hover{
-	background-color: #F4FA58;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	font-size: 16px;
 	letter-spacing: 2px;
 	color: BLACK;
 	transition:0.5s;
