@@ -1,6 +1,6 @@
 <div classe="conteneur">
 	<header>
-		<?php include 'haut.php' ;?>
+		<?php //include_once 'haut.php' ;?>
 	</header>
 
 	<div id="Connexion">
@@ -12,7 +12,7 @@
 	</div>
 
 	<footer>
-		<?php include 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</footer>
 
 </div>

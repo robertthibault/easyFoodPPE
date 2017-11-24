@@ -14,7 +14,7 @@ if(isset($_GET['easyFoodMP'])){
 }
 else{
 	if(!isset($_SESSION['easyFoodMP'])){
-		$_SESSION['easyFoodMP']="GestPlat";
+		$_SESSION['easyFoodMP']="Connexion";
 	}
 }
 /*

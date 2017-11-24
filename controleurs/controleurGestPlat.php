@@ -1,13 +1,10 @@
 <?php
 
-  //Temporaire
-  $_SESSION['identification']['NOMU'] = "Sokingu";
-  $_SESSION['identification']['PRENOMU'] = "Aleriane";
-  $_SESSION['identification']['IDU'] = 6;
-  //Temporaire
-
   $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
-  $lesPlats = PlatDAO::lesPlatsParId($sonResto, 'IDR');
+  $lesPlats = PlatDAO::lesPlatsParId($sonResto['IDR'], 'IDR');
+  if (empty($lesPlats)) {
+    $msg = "Vous n'avez aucun plat.";
+  }
 
   if (isset($_POST['modifier'])) {
     foreach ($lesPlats as $plat) {

@@ -62,9 +62,9 @@ class DBConnex extends PDO{
 class utilisateurDAO{
 
     public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
-        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
+        $sql = "select IDU, NOMU, PRENOMU, TYPEU from UTILISATEUR where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $login[0];
+        return $login;
     }
 
 	public static function dernierNumero(){
@@ -84,9 +84,11 @@ class utilisateurDAO{
 	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
 
 		public static function sonResto($unIdU){
-			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
+			$sql = "SELECT * FROM RESTO WHERE IDU=".$unIdU;
 			$resto = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $resto[0];
+			if (!empty($resto)) {
+				return $resto;
+			}
 		}
 }
 
@@ -160,8 +162,9 @@ class PlatDAO{
 		return $unPlat;
 	}
 
-	public static function sonTypePlat($unIdP){
-		$sql = "SELECT * FROM type_plat, plat WHERE IDP=". $unIdP . " AND plat.IDT=type_plat.IDT";
+	public static function sonTypePlat($unIdT){
+		$sql = "SELECT TYPE_PLAT.* FROM TYPE_PLAT, PLAT WHERE PLAT.IDT=". $unIdT . " AND PLAT.IDT=TYPE_PLAT.IDT";
+		echo $sql;
 		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $unTypePlat;
