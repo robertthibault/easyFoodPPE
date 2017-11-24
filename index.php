@@ -1,5 +1,6 @@
 <?php
-require_once 'fonctions/autoload.php';
+require_once 'lib/autoload.php';
+require_once 'lib/erreurs.php';
 session_start()?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,6 +15,6 @@ session_start()?>
 		<?php
 			include 'controleurs/controleurPrincipal.php';
 		?>
-		
+
 	</body>
 </html>
