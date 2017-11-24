@@ -1,0 +1,1 @@
+[24-Nov-2017 15:08:57 Europe/Berlin] PHP Parse error:  syntax error, unexpected '*', expecting end of file in /home/berquej/public_html/easyFoodPPE/controleurs/controleurPrincipal.php on line 74
