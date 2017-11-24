@@ -51,11 +51,17 @@ class DBConnex extends PDO{
 	}
 
 	public function update($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 
 	public function delete($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -164,7 +170,6 @@ class PlatDAO{
 
 	public static function sonTypePlat($unIdT){
 		$sql = "SELECT TYPE_PLAT.* FROM TYPE_PLAT, PLAT WHERE PLAT.IDT=". $unIdT . " AND PLAT.IDT=TYPE_PLAT.IDT";
-		echo $sql;
 		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $unTypePlat;
@@ -185,13 +190,13 @@ class PlatDAO{
 	}
 
 	public static function modifier(Plat $plat){
-		$sql = "UPDATE plat
+		$sql = "UPDATE PLAT
 						SET IDR = '" . $plat->getIdR() . "',
 								IDT = '" . $plat->getIdT() . "',
 								NOMP = '" . $plat->getNomP() . "',
 								PRIXFOURNISSEURP = '" . $plat->getPrixFournisseurP() . "',
-								PRIXCLIENTP	= " . $plat->getPrixClientP() . "',
-								DESCRIPTIONP	= " . $plat->getDescriptionP() . "
+								PRIXCLIENTP	= '" . $plat->getPrixClientP() . "',
+								DESCRIPTIONP	= '" . $plat->getDescriptionP() . "'
 						WHERE IDP = " . $plat->getIdP();
 		return DBConnex::getInstance()->update($sql);
 	}

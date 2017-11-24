@@ -4,10 +4,12 @@
 	</header>
 
 	<div id="Connexion">
-			<p id ='titre'>Veuillez vous inscrire</p>
+			<p id ='titre'>Veuillez vous connecter</p>
 				<main>
-					<?php echo $formulaireConnexion->afficherFormulaire() ?>
-					<?php echo $formulairePourInscription->afficherFormulaire() ?>
+					<?php
+						$formulaireConnexion->afficherFormulaire();
+						$formulairePourInscription->afficherFormulaire()
+					?>
 			</main>
 	</div>
 

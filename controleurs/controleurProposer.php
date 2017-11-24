@@ -24,7 +24,7 @@
   $formulaireProposer->ajouterComposantTab();
 
   $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', 'Resto :'), 1);
-  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', $sonResto), 1);
+  $formulaireProposer->ajouterComposantLigne($formulaireProposer->creerLabelFor('resto', $sonResto['NOMR']), 1);
   //$formulaireProposer->ajouterComposantLigne($formulaireProposer->creerSelectResto('resto', 'resto', 'resto', $lesRestos), 1);
   $formulaireProposer->ajouterComposantTab();
 
