@@ -1,7 +1,7 @@
 <div id="conteneur">
 
 	<div id='header'>
-		<?php //include 'haut.php' ;?>
+		<?php include 'haut.php' ;?>
 	</div>
 
 	<div id="content">

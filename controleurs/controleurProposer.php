@@ -1,12 +1,11 @@
 <?php
 
   //Temporaire
-  $_SESSION['identification']['IDU'] = 7;
+  //$_SESSION['identification']['IDU'] = 7;
   //Temporaire
 
   $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
   $lesTypesPLats = TypePlatDAO::lesTypesPlats();
-  $_SESSION['identification']['IDU'] = 7;
 
   if (isset($_POST['proposer'])) {
     $plat = new Plat(PlatDAO::dernierNumero(), $sonResto, $_POST['typePlat'], $_POST['nom'], $_POST['prixF'], $_POST['prixC'], "0", $_POST['description']);

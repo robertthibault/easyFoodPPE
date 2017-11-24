@@ -5,25 +5,20 @@ require_once 'lib/formulaire.php';
 require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
-require 'controleurInscription.php';
-
-require 'controleurs/controleurGestPlat.php';
-
 
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut----------------------*/
 /*----------------------------------------------------------*/
-/*
 if(isset($_GET['easyFoodMP'])){
 	$_SESSION['easyFoodMP']= $_GET['easyFoodMP'];
 }
 else{
 	if(!isset($_SESSION['easyFoodMP'])){
-		$_SESSION['easyFoodMP']="Accueil";
+		$_SESSION['easyFoodMP']="GestPlat";
 	}
 }
-
 /*
+
  //////Message Erreur
  $messageErreurConnexion ='';
  if(isset($_POST['email'] , $_POST['mdp'])){
@@ -37,8 +32,8 @@ else{
         $messageErreurConnexion = 'Email ou mot de passe incorrect !';
     }
  }
- 
-/*
+
+
 $easyFoodMP = new Menu("menuP");
 
  if (!isset($_SESSION['identification'])) {
@@ -48,8 +43,7 @@ $easyFoodMP = new Menu("menuP");
  }
 
 $menuPrincipal = $easyFoodMP->creerMenu('easyFoodMP');
-
-include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 */
 
+include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 ?>

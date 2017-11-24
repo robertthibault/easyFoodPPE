@@ -120,6 +120,7 @@ class RestoDAO{
 			return intval($num[0]) + 1;
 		}
 }
+
 class PlatDAO{
 
 	//Paramètres : numéro id, nom du champ de la table
@@ -144,8 +145,8 @@ class PlatDAO{
 		return $unPlat;
 	}
 
-	public static function sonTypePlat($unIdT){
-		$sql = "SELECT * FROM type_plat WHERE IDT=".$unIdT;
+	public static function sonTypePlat($unIdP){
+		$sql = "SELECT * FROM type_plat, plat WHERE IDP=". $unIdP . " AND plat.IDT=type_plat.IDT";
 		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $unTypePlat;

@@ -1,6 +1,6 @@
 <?php
 
-  $unPlat = PlatDAO::lePlatParId($_SESSION['idPlat'], 'IDP');
+  $unPlat = PlatDAO::lePlatParId($_POST['idPlat'], 'IDP');
   $lesTypesPLats = TypePlatDAO::lesTypesPlats();
 
   if (isset($_POST['modifierPlat'])) {

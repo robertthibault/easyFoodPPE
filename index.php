@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once 'fonctions/autoload.php';
+=======
+require_once 'lib/autoload.php';
+>>>>>>> DevelopAlex
 require_once 'lib/erreurs.php';
 session_start()?>
 <!DOCTYPE html>
