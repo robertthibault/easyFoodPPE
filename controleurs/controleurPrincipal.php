@@ -20,18 +20,21 @@ else{
 	}
 }
 
-/*
- //////Message Erreur
- $messageErreurConnexion ='';
- if(isset($_POST['email'] , $_POST['mdp'])){0.
-    $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
 
-    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
+/////Message Erreur
+ $messageErreurConnexion ='';
+ if(isset($_GET['email'] , $_GET['mdp'])){
+    $unUtilisateur = new utilisateur('', '', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
+
+    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur->getEmail(), $unUtilisateur->getMdp());
     if($_SESSION['identification']){
-        $_SESSION['easyFoodMP']="accueil";
+			echo "test ok";
+        $_SESSION['easyFoodMP']="Accueil";
     }
+		else{
+			echo $_POST['email'];
+		}
  }
-*/
 
 $easyFoodMP = new Menu("menuP");
 

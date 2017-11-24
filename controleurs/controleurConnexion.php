@@ -1,5 +1,7 @@
 <?php
 
+if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
+/*
   if(isset($_POST['Valider'])){
     if (isset($_POST['email']) && isset($_POST['mdp'])) {
       $_SESSION['identification'] = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
@@ -14,14 +16,13 @@
     }
   }
 
-/*
   if(isset($_POST['inscrire'])){
     $_SESSION['easyFoodMP']="Inscription";
     include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
   }
   */
 
-    $formulaireConnexion = new Formulaire('post', 'index.php', 'formConnexion', 'formUniforme');
+    $formulaireConnexion = new Formulaire('get', 'index.php', 'formConnexion', 'formUniforme');
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('email', 'email', '' , 1, 'Email',0),1);
     $formulaireConnexion->ajouterComposantTab();
 
@@ -39,8 +40,16 @@
     $formulairePourInscription = new Formulaire('post', 'index.php', 'formulairePourInscription', 'formUniforme');
     $formulairePourInscription->ajouterComposantLigne($formulairePourInscription->creerInputSubmit('inscrire', 'inscrire', 'Pas encore inscrit ?'),2);
     $formulairePourInscription->ajouterComposantTab();
+
     $formulairePourInscription->creerFormulaire();
 
     include 'vues/squeletteConnexion.php';
+  }
+  else{
+    $_SESSION['identification']=array();
+    $_SESSION['easyFoodMP']="Accueil";
+    header('location: index.php');
+
+  }
 
 ?>
