@@ -9,7 +9,7 @@ class Formulaire{
 	private $ligneComposants = array();
 	private $tabComposants = array();
 
-	public function __construct($uneMethode, $uneAction ,$unNom, $unStyle){
+	public function __construct($uneMethode, $uneAction , $unNom, $unStyle){
 		$this->method = $uneMethode;
 		$this->action = $uneAction;
 		$this->nom = $unNom;
@@ -72,43 +72,29 @@ class Formulaire{
 	}
 
 	/////////// RADIO BOUTON
-	public function creerRadioButton($unNom, $unId, $uneValue){
+	public function creerRadioButton($unNom, $uneValue, $unId){
 		$composant = "<input type = 'radio' name = '" . $unNom . "' id = '" . $unId . "' ";
 		if (!empty($uneValue)){
 				$composant .= "value = '" . $uneValue . "' ";
 		}
+
 		if (!empty($placeholder)){
 				$composant .= "placeholder = '" . $placeholder . "' ";
 		}
 		if ( $required = 1){
 				$composant .= "required";
 		}
-		$composant .= "/>";
+		$composant .= "/> <label for ='" . $uneValue . "'> " . $uneValue . "";
 		return $composant;
 	}
-    //////////////////////////////////////////////////////	
-	
+
+  //////////////////////////////////////////////////////
 	public function creerLabelFor($unFor,  $unLabel){
 		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
 		return $composant;
 	}
 	public function creerInputButton($unNom,$unId){
 		$composant = "<button type = 'button' id= '" . $unId . "'>" .$unNom."</button>";
-		return $composant;
-	}
-
-	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options){
-		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
-		$i = 0;
-		foreach ($options as $option){
-			$composant .= "<option value = '";
-			$tab = $options[$i];
-			$composant .= $tab->getIdT();
-			$i++;
-			$composant .= "'> " . $tab->getLibelleT();
-			$composant .= "</option>";
-		}
-		$composant .= "</select></td></tr>";
 		return $composant;
 	}
 
@@ -127,6 +113,21 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options, $selected){
+		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+		$i = 0;
+		foreach ($options as $option) {
+			$i++;
+			$composant .= "<option value = '" . $option->getIdT() ."' ";
+			if ($i == $selected) {
+				$composant .= "selected='selected' ";
+			}
+			$composant .= ">" . $option->getLibelleT() . "</option>";
+		}
+		$composant .= "</select></td></tr>";
+		return $composant;
+	}
+
 	public function creerInputSubmit($unNom, $unId, $uneValue){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";
 		$composant .= "value = '" . $uneValue . "'/> ";
@@ -139,6 +140,11 @@ class Formulaire{
 		return $composant;
 	}
 
+	public function creerInputLogo($unNom, $unId, $uneSource){
+		$composant = "<input  type = 'image' name = '" . $unNom . "' id = '" . $unId . "' ";
+		$composant .= "src = '" . $uneSource . "'/>";
+		return $composant;
+	}
 
 	public function creerFormulaire(){
 		$this->formulaireToPrint = "<form method = '" .  $this->method . "' ";
