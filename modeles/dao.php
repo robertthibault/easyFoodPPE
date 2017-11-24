@@ -72,7 +72,7 @@ class utilisateurDAO{
 			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 			return intval($num[0]) + 1;
 		}
-	
+
 	public static function ajouter(Utilisateur $utilisateur){
 	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
                 VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
@@ -181,29 +181,4 @@ class PlatDAO{
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		return intval($num[0]) + 1;
 	}
-<<<<<<< HEAD
-	public static function lesPlats(){
-		$result = array();
-		$sql = "SELECT * FROM PLAT ORDER BY NOMP " ;
-		$liste = DBConnex::getInstance()->queryFetchAll($sql);
-		if(!empty($liste)){
-			foreach($liste as $plat){
-				$unPlat = new Plat($plat['idP'],$plat['nomP'] );
-				$unPlat->hydrate($plat);
-				$result[] = $unPlat;
-			}
-		}
-		return $result;
-	}
-
-	class CommandeDAO{
-		public static function dernierNumero(){
-			$sql = "SELECT MAX(IDC) FROM COMMANDE;";
-			$num = DBConnex::getinstance()->queryFetchFirstRow($sql);
-			return $num;
-		}
-	}
-
-=======
->>>>>>> master
 }
