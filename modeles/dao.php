@@ -67,35 +67,12 @@ class utilisateurDAO{
         return $login[0];
     }
 
-<<<<<<< HEAD
-		public static function dernierNumero(){
-			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
-			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num[0]) + 1;
-		}
-=======
+
 	public static function dernierNumero(){
 		$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
 		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		return intval($num[0]) + 1;
 	}
->>>>>>> origin/merge
-
-	public static function ajouter(Utilisateur $utilisateur){
-	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
-                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
-								. $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
-	    return DBConnex::getInstance()->insert($sql);
-	}
-	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
-	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
-	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
-
-		public static function sonResto($unIdU){
-			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
-			$resto = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $resto[0];
-		}
 }
 
 class TypePlatDAO{

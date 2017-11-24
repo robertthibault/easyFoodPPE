@@ -1,1 +1,20 @@
 [24-Nov-2017 15:08:57 Europe/Berlin] PHP Parse error:  syntax error, unexpected '*', expecting end of file in /home/berquej/public_html/easyFoodPPE/controleurs/controleurPrincipal.php on line 74
+[24-Nov-2017 15:13:29 Europe/Berlin] PHP Parse error:  syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 70
+[24-Nov-2017 15:14:57 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:14:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:14:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:14:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:15:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:15:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:15:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:15:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:15:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /home/berquej/public_html/easyFoodPPE/modeles/dao.php on line 78
+[24-Nov-2017 15:16:34 Europe/Berlin] PHP Warning:  Missing argument 2 for Formulaire::ajouterComposantLigne(), called in /home/berquej/public_html/easyFoodPPE/vues/haut.php on line 5 and defined in /home/berquej/public_html/easyFoodPPE/lib/formulaire.php on line 25
+[24-Nov-2017 15:16:34 Europe/Berlin] PHP Notice:  Undefined variable: unNbCols in /home/berquej/public_html/easyFoodPPE/lib/formulaire.php on line 27
+[24-Nov-2017 15:16:34 Europe/Berlin] PHP Notice:  Undefined variable: menuPrincipal in /home/berquej/public_html/easyFoodPPE/vues/haut.php on line 9
+[24-Nov-2017 15:16:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined method utilisateurDAO::sonResto() in /home/berquej/public_html/easyFoodPPE/controleurs/controleurGestPlat.php:8
+Stack trace:
+#0 /home/berquej/public_html/easyFoodPPE/controleurs/controleurPrincipal.php(10): require()
+#1 /home/berquej/public_html/easyFoodPPE/index.php(16): include('/home/berquej/p...')
+#2 {main}
+  thrown in /home/berquej/public_html/easyFoodPPE/controleurs/controleurGestPlat.php on line 8
