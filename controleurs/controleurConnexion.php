@@ -2,10 +2,10 @@
 
   if(isset($_POST['Valider'])){
     if (isset($_POST['email']) && isset($_POST['mdp'])) {
-      $unUtilisateur = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
-      if($unUtilisateur != NULL){
-        $_SESSION['identification']=array($unUtilisateur);
-        $_SESSION['easyFoodMP']=$_SESSION['dernierePage'];
+      $_SESSION['identification'] = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
+      if($_SESSION['identification'] != NULL){
+        //$_SESSION['identification']=array($unUtilisateur);
+        $_SESSION['easyFoodMP']='GestPlat';
         include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
       }
     }

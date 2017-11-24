@@ -1,18 +1,20 @@
 <div classe="conteneur">
 	<header>
-		<?php include 'haut.php' ;?>
+		<?php //include_once 'haut.php' ;?>
 	</header>
 
 	<div id="Connexion">
-			<p id ='titre'>Veuillez vous inscrire</p>
+			<p id ='titre'>Veuillez vous connecter</p>
 				<main>
-					<?php echo $formulaireConnexion->afficherFormulaire() ?>
-					<?php echo $formulairePourInscription->afficherFormulaire() ?>
+					<?php
+						$formulaireConnexion->afficherFormulaire();
+						$formulairePourInscription->afficherFormulaire()
+					?>
 			</main>
 	</div>
 
 	<footer>
-		<?php include 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</footer>
 
 </div>

@@ -51,20 +51,26 @@ class DBConnex extends PDO{
 	}
 
 	public function update($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 
 	public function delete($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 }
 
 class utilisateurDAO{
 
     public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
-        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
+        $sql = "select IDU, NOMU, PRENOMU, TYPEU from UTILISATEUR where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $login[0];
+        return $login;
     }
 
 	public static function dernierNumero(){
@@ -84,9 +90,11 @@ class utilisateurDAO{
 	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
 
 		public static function sonResto($unIdU){
-			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
+			$sql = "SELECT * FROM RESTO WHERE IDU=".$unIdU;
 			$resto = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $resto[0];
+			if (!empty($resto)) {
+				return $resto;
+			}
 		}
 }
 
@@ -135,6 +143,7 @@ class RestoDAO{
 			return intval($num[0]) + 1;
 		}
 }
+
 class PlatDAO{
 
 	//Paramètres : numéro id, nom du champ de la table
@@ -160,7 +169,7 @@ class PlatDAO{
 	}
 
 	public static function sonTypePlat($unIdT){
-		$sql = "SELECT * FROM type_plat WHERE IDT=".$unIdT;
+		$sql = "SELECT TYPE_PLAT.* FROM TYPE_PLAT, PLAT WHERE PLAT.IDT=". $unIdT . " AND PLAT.IDT=TYPE_PLAT.IDT";
 		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $unTypePlat;
@@ -181,13 +190,13 @@ class PlatDAO{
 	}
 
 	public static function modifier(Plat $plat){
-		$sql = "UPDATE plat
+		$sql = "UPDATE PLAT
 						SET IDR = '" . $plat->getIdR() . "',
 								IDT = '" . $plat->getIdT() . "',
 								NOMP = '" . $plat->getNomP() . "',
 								PRIXFOURNISSEURP = '" . $plat->getPrixFournisseurP() . "',
-								PRIXCLIENTP	= " . $plat->getPrixClientP() . "',
-								DESCRIPTIONP	= " . $plat->getDescriptionP() . "
+								PRIXCLIENTP	= '" . $plat->getPrixClientP() . "',
+								DESCRIPTIONP	= '" . $plat->getDescriptionP() . "'
 						WHERE IDP = " . $plat->getIdP();
 		return DBConnex::getInstance()->update($sql);
 	}

@@ -12,7 +12,7 @@
     if (PlatDAO::modifier($unPlat)){
       $msg = "Le plat a bien été modifié.";
     }else {
-      $msg = "Une erreur est survenue.";
+      $msg = "Veuillez modifier les champs avant d'envoyer.";
     }
   }
 
@@ -41,8 +41,10 @@
   $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputSubmit('modifierPlat', 'modifierPlat', "Modifier"), 1);
   $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->creerFormulaire();
+  if (isset($msg)){$formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabel($msg), 1);}
+  $formulaireModifPlat->ajouterComposantTab();
 
+  $formulaireModifPlat->creerFormulaire();
 
   include_once "vues/squeletteModifPlat.php";
 

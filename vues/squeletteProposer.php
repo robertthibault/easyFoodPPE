@@ -1,11 +1,11 @@
 <div id="conteneur">
 
 	<div id='header'>
-		<?php //include 'haut.php' ;?>
+		<?php //include_once 'haut.php' ;?>
 	</div>
 
 	<div id="content">
-		<?php include "proposer.php" ?>
+		<?php include_once "proposer.php" ?>
 	</div>
 
 	<div id="bas">

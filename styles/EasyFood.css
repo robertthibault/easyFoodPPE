@@ -31,7 +31,7 @@ main {
 /****************************************************/
 header {
   height: 90px;
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
   top: 0;
   left: 0;
@@ -40,7 +40,7 @@ header {
 
 .formLogo{
 	height: 90px;
-	position: fixed;
+	/*position: fixed;*/
 	width: 100px;
 	top: 0;
 	left: 0;
