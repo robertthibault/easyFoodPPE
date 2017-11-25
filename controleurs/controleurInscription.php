@@ -50,10 +50,10 @@ $formulaireInscription->ajouterComposantTab();
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("email", "email", '',1, 'Email'), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp", "mdp", ''), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp", "mdp", '', 1,'saisir votre mot de passe', 0), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp2", "mdp2", ''), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp2", "mdp2", '', 1,'confirmer votre mot de passe', 0), 1);
 $formulaireInscription->ajouterComposantTab();
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputSubmit("inscrire", "inscrire", "inscrire"),1);;

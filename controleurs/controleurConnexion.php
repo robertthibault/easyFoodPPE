@@ -1,6 +1,7 @@
 <?php
 
 if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
+
 /*
   if(isset($_POST['Valider'])){
     if (isset($_POST['email']) && isset($_POST['mdp'])) {
@@ -14,26 +15,31 @@ if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
           $msg = 'Email ou mot de passe incorrect !';
       }
     }
-  }
+ }
 
+/*
   if(isset($_POST['inscrire'])){
     $_SESSION['easyFoodMP']="Inscription";
     include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
   }
-  */
+*/
 
     $formulaireConnexion = new Formulaire('get', 'index.php', 'formConnexion', 'formUniforme');
+
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel("Veuillez vous connecter"), 1);
+    $formulaireConnexion->ajouterComposantTab();
+
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('email', 'email', '' , 1, 'Email',0),1);
     $formulaireConnexion->ajouterComposantTab();
 
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputPass('mdp', 'mdp', '' ,1),1);
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputPass('mdp', 'mdp', '', 1,'saisir votre mot de passe', 0), 1);
     $formulaireConnexion->ajouterComposantTab();
 
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion-> creerInputSubmit('Valider', 'Valider', 'Valider'),2);
     $formulaireConnexion->ajouterComposantTab();
 
-    //$formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"),2);
-    //$formulaireConnexion->ajouterComposantTab();
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"),2);
+    $formulaireConnexion->ajouterComposantTab();
 
     $formulaireConnexion->creerFormulaire();
 
@@ -44,7 +50,7 @@ if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
     $formulairePourInscription->creerFormulaire();
 
     include 'vues/squeletteConnexion.php';
-  }
+ }
   else{
     $_SESSION['identification']=array();
     $_SESSION['easyFoodMP']="Accueil";

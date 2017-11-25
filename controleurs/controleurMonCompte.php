@@ -1,12 +1,13 @@
 <?php
 
 if(isset($_POST['modifier'])){
-    $unUtilisateur = utilisateurDAO::supprimer($_SESSION['identification']['IDU']);
+    $unUtilisateur = utilisateurDAO::modifier($_SESSION['identification']);
     $_SESSION['easyFoodMP']="Accueil";
     include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 }
 
 if(isset($_POST['supprimer'])){
+  $unUtilisateur = utilisateurDAO::supprimer($_SESSION['identification']['IDU']);
   $_SESSION['easyFoodMP']="Accueil";
   include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 }
@@ -15,11 +16,11 @@ if(isset($_POST['supprimer'])){
 $formulaireMonCompte = new Formulaire('post', 'index.php', 'formMonCompte', 'formUniforme');
 
 $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("nom", "Nom :"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("nom", "nom", '',1, ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("nom", "nom", '',1, $_SESSION['identification']['NOMU']), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
 $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("prenom", "Prénom :"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("prenom", "prenom", '',1, ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("prenom", "prenom", '',1, $_SESSION['identification']['PRENOMU']), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
 $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("civilite", "Civilite:"), 1);
@@ -29,19 +30,16 @@ $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerRadioButt
 $formulaireMonCompte->ajouterComposantTab();
 
 $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("email", "Email:"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("email", "email", '',1, ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputTexte("email", "email", '',1, $_SESSION['identification']['EMAILU']), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("mdp", "Ancien mot de passe:"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp", "mdp", ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp", "mdp", '', 1,'saisir votre ancien mot de passe', 0), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("mdp2", "Nouveau mot de passe:"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp2", "mdp2", ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp", "mdp", '', 1,'saisir votre nouveau mot de passe', 0), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerLabelFor("mdp3", "Confirmation mot de passe:"), 1);
-$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp3", "mdp3", ''), 1);
+$formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputPass("mdp3", "mdp3", '', 1,'confirmer votre mot de passe', 0), 1);
 $formulaireMonCompte->ajouterComposantTab();
 
 $formulaireMonCompte->ajouterComposantLigne($formulaireMonCompte->creerInputSubmit('modifier', 'modifier', 'Modifier'),2);

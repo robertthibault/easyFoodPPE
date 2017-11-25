@@ -7,11 +7,8 @@
 				<main>
 					<?php  $formulaireConnexion->afficherFormulaire();
 							 	 $formulairePourInscription->afficherFormulaire();
-								 if(isset($msg)){
-				 					echo $msg;
-				 				}
 					?>
-			</main>
+			 </main>
 	</div>
 
 	<footer>

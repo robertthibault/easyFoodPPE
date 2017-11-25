@@ -6,11 +6,12 @@
 
 	<div id="content">
 		<div id="formUniforme">
+			<main>
 				<?php $formulaireInscription->afficherFormulaire();
 				if(isset($msg)){
 					echo $msg;
 				}?>
-
+		 </main>
 		</div>
 		</div>
 	</div>

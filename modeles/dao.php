@@ -61,8 +61,8 @@ class DBConnex extends PDO{
 
 class utilisateurDAO{
 
-    public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
-        $sql = "SELECT * FROM utilisateur WHERE EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
+    public static function verification(Utilisateur $utilisateur){
+        $sql = "SELECT * FROM utilisateur WHERE EMAILU = '" . $utilisateur->getEmail() . "' and  MOTDEPASSEU = '" .  md5($utilisateur->getMdp()) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login;
     }
@@ -80,10 +80,18 @@ class utilisateurDAO{
 	     return DBConnex::getInstance()->insert($sql);
 	 }
 
+	 public static function modifier(Utilisateur $utilisateur){
+	     $sql = "UPDATE UTILISATEUR
+			 				SET NOMU='" . $utilisateur->getNom() . "', PRENOMU='" . $utilisateur->getPrenom() . "', EMAILU='"
+							. $utilisateur->getEmail() . "', MOTDEPASSEU='" . $utilisateur->getMdp() . "', TYPEU='" . $utilisateur->getTypeU() . "'
+							WHERE IDU = " . $utilisateur->getId();
+	     return DBConnex::getInstance()->update($sql);
+	 }
+
 	 public static function supprimer($unIdU){
 		 $sql = "DELETE FROM UTILISATERUR
 						 WHERE IDU=".$unIdU;
-	  return DBConnex::getInstance()->queryFetchFirstRow($sql);
+	  return DBConnex::getInstance()->delete($sql);
 	 }
 	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
 	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .

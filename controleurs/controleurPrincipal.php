@@ -21,20 +21,19 @@ else{
 }
 
 
-/////Message Erreur
- $messageErreurConnexion ='';
- if(isset($_GET['email'] , $_GET['mdp'])){
-    $unUtilisateur = new utilisateur('', '', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
+$messageErreurConnexion ='';
+if (isset($_POST['email']) && isset($_POST['mdp'])) {
+	$utilisateur = new Utilisateur('', '', '', '', $_POST['email'], $_POST['mdp'], '', '', '', '', '', '', '', '');
+	$_SESSION['identification'] = utilisateurDAO::verification($utilisateur);
+	if($_SESSION['identification'] != NULL){
+		$_SESSION['easyFoodMP']="Accueil";
+		include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
+	}
+	else {
+		$messageErreurConnexion = 'Email ou mot de passe incorrect !';
+	}
+}
 
-    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur->getEmail(), $unUtilisateur->getMdp());
-    if($_SESSION['identification']){
-			echo "test ok";
-        $_SESSION['easyFoodMP']="Accueil";
-    }
-		else{
-			echo $_POST['email'];
-		}
- }
 
 $easyFoodMP = new Menu("menuP");
 
@@ -51,7 +50,7 @@ else{
 		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Gestion des plats','GestPlat'));
 	}
 		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien($_SESSION['identification']['PRENOMU'] . " " . $_SESSION['identification']['NOMU'], 'MonCompte'));
-		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Déconnexion','Deconnexion'));
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Déconnexion','Connexion'));
 }
 
 /*----------------------------------------------------------*/
@@ -60,6 +59,15 @@ else{
 if (isset($_POST['inscrire'])) {
 	$_SESSION['menuPrincipal'] = 'Inscription';
 }
+
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire connexion ----------*/
+/*----------------------------------------------------------*/
+/*
+if (isset($_POST['Valider'])) {
+	$_SESSION['menuPrincipal'] = 'Connexion';
+}
+*/
 
 $leMenuP = $easyFoodMP->creerMenu('menuPrincipal');
 include_once dispatcher::dispatch($_SESSION['menuPrincipal']);

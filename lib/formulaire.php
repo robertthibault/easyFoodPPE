@@ -56,7 +56,7 @@ class Formulaire{
 		return $composant;
 	}
 
-	public function creerInputPass($unNom, $unId, $uneValue){
+	public function creerInputPass($unNom, $unId, $uneValue, $required , $placeholder){
 	    $composant = "<input type = 'password' name = '" . $unNom . "' id = '" . $unId . "' ";
 	    if (!empty($uneValue)){
 	        $composant .= "value = '" . $uneValue . "' ";
