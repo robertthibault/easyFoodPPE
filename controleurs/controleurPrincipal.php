@@ -11,43 +11,58 @@ require_once 'modeles/dao.php';
 /*--------session du menu principal avec accueil par defaut----------------------*/
 /*----------------------------------------------------------*/
 
-if(isset($_GET['menuP'])){
-	$_SESSION['menuP']= $_GET['menuP'];
+if(isset($_GET['menuPrincipal'])){
+	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
 }
 else{
-	if(!isset($_SESSION['menuP'])){
-		$_SESSION['menuP']="Accueil";
+	if(!isset($_SESSION['menuPrincipal'])){
+		$_SESSION['menuPrincipal']="Accueil";
 	}
 }
 
 
- //////Message Erreur
+/////Message Erreur
  $messageErreurConnexion ='';
- if(isset($_POST['email'] , $_POST['mdp'])){
-    $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
+ if(isset($_GET['email'] , $_GET['mdp'])){
+    $unUtilisateur = new utilisateur('', '', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
 
-    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
+    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur->getEmail(), $unUtilisateur->getMdp());
     if($_SESSION['identification']){
-        $_SESSION['menuP']="accueil";
+			echo "test ok";
+        $_SESSION['easyFoodMP']="Accueil";
     }
-    else {
-        $messageErreurConnexion = 'Email ou mot de passe incorrect !';
-    }
+		else{
+			echo $_POST['email'];
+		}
  }
-
 
 $easyFoodMP = new Menu("menuP");
 
- if (!isset($_SESSION['identification'])) {
- 	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien("Connexion",'connexion'));
- }
- else {
- $easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien("Bienvenue : " . $_SESSION['identification'][1] . $_SESSION['identification'][2] . $_SESSION['identification'][3]),'InfoClient');
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Accueil','Accueil'));
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Les plats', 'Plat'));
+if (!isset($_SESSION['identification'])) {
+	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Connexion','Connexion'));
+}
+else{
+	if($_SESSION['identification']['TYPEU']== 'client'){
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Panier','Panier'));
+	}
+	elseif ($_SESSION['identification']['TYPEU'] == 'restaurateur') {
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Gestion des plats','GestPlat'));
+	}
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien($_SESSION['identification']['PRENOMU'] . " " . $_SESSION['identification']['NOMU'], 'MonCompte'));
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Déconnexion','Deconnexion'));
 }
 
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire inscription ----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['inscrire'])) {
+	$_SESSION['menuPrincipal'] = 'Inscription';
+}
 
-
-include_once dispatcher::dispatch($_SESSION['menuP']);
+$leMenuP = $easyFoodMP->creerMenu('menuPrincipal');
+include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
 
 
 ?>

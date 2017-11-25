@@ -1,18 +1,21 @@
 <div classe="conteneur">
 	<header>
-		<?php include 'haut.php' ;?>
+		<?php include_once 'haut.php' ;?>
 	</header>
 
-	<div id="Connexion">
-			<p id ='titre'>Veuillez vous inscrire</p>
+	<div id="formUniforme">
 				<main>
-					<?php echo $formulaireConnexion->afficherFormulaire() ?>
-					<?php echo $formulairePourInscription->afficherFormulaire() ?>
+					<?php  $formulaireConnexion->afficherFormulaire();
+							 	 $formulairePourInscription->afficherFormulaire();
+								 if(isset($msg)){
+				 					echo $msg;
+				 				}
+					?>
 			</main>
 	</div>
 
 	<footer>
-		<?php include 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</footer>
 
 </div>

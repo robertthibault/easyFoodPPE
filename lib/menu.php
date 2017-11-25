@@ -61,7 +61,7 @@ class Menu{
 		$menu = '<ul class = "' .  $this->style . '">';
 		foreach($this->composants as $composant){
 				$menu .= '<li>';
-				$menu .= '<a href="index.php?". $menu' ;
+				$menu .= '<a href="index.php?menuPrincipal' ;
 				$menu .= '=' .$composant[0] . '" >';
 				$menu .= '<span>' . $composant[1] .'</span>';
 				$menu .= '</a>';

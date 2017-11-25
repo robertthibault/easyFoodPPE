@@ -62,23 +62,29 @@ class DBConnex extends PDO{
 class utilisateurDAO{
 
     public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
-        $sql = "select NOMU, PRENOMU, TYPEU from utilisateur where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
+        $sql = "SELECT * FROM utilisateur WHERE EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $login[0];
+        return $login;
     }
 
-	public static function dernierNumero(){
-		$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
-		$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-		return intval($num[0]) + 1;
-	}
+	 public static function dernierNumero(){
+		 $sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+		 $num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		 return intval($num[0]) + 1;
+	 }
 
-	public static function ajouter(Utilisateur $utilisateur){
-	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
-                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
-								. $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
-	    return DBConnex::getInstance()->insert($sql);
-	}
+	 public static function ajouter(Utilisateur $utilisateur){
+	     $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
+                 VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
+								 . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
+	     return DBConnex::getInstance()->insert($sql);
+	 }
+
+	 public static function supprimer($unIdU){
+		 $sql = "DELETE FROM UTILISATERUR
+						 WHERE IDU=".$unIdU;
+	  return DBConnex::getInstance()->queryFetchFirstRow($sql);
+	 }
 	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
 	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
 	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
