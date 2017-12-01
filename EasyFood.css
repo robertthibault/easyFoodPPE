@@ -1,0 +1,311 @@
+@charset "ISO-8859-1";
+*{
+	margin:0%;
+	padding:0%;
+}
+
+
+/****************************************************/
+/*styles pour la zone centrale de la page           */
+/****************************************************/
+main {
+	margin-top: 100px;
+	margin-left: 200px;
+	padding-top: 0px;
+	min-height: 600px;
+ 	font-size: 20px;
+ 	margin-top:200px;
+}
+
+/****************************************************/
+/*styles pour le bandeau                            */
+/****************************************************/
+
+.bandeau {
+  height: 120px;
+	background: url("../images/easyFoodMini.png") no-repeat left top;
+}
+
+/****************************************************/
+/*styles pour le header                             */
+/****************************************************/
+header {
+  height: 90px;
+  /*position: fixed;*/
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.formLogo{
+	height: 90px;
+	/*position: fixed;*/
+	width: 100px;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+#logo {
+	margin-top: 10px;
+	width:90px;
+	margin-left:50px;
+
+}
+#separateur_menuP{
+	width: 100%;
+	border: none;
+	background-color: red;
+	margin-top: 120px;
+	height: 7px;
+}
+
+/****************************************************/
+/*styles pour le menu principal                     */
+/****************************************************/
+nav.menuPrincipal{
+	background-color: #FAFAFA;
+	font-size: 0px;
+	text-align: right;
+	height: 75px;
+	padding: 0px;
+
+
+}
+
+nav.menuPrincipal ul {
+	display: inline-block;
+	list-style: none;
+	margin-top:5px;
+
+
+}
+
+
+nav.menuPrincipal ul li {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Helvetica;
+}
+
+
+nav.menuPrincipal ul li a {
+	display: table-cell;
+    text-decoration: none;
+  	color: black;
+  	text-align: center;
+  	vertical-align: middle;
+  	height: 50px;
+  	width: 140px;
+}
+
+nav.menuPrincipal ul li a:hover {
+  color: grey;
+	transition:0.5s;
+}
+
+nav.menuPrincipal ul li .actif {
+		display: table-cell;
+  	background-color: ivory;
+  	color: black;
+  	text-align: center;
+  	vertical-align: middle;
+  	height: 50px;
+  	width: 140px;
+}
+
+/****************************************************/
+/*styles pour le page d'accueil                     */
+/****************************************************/
+
+.texteAccueil {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  font-size: 17px;
+}
+
+.texteAccueil h1 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-algn: center;
+  text-align: center;
+}
+
+.texteAccueil p {
+  padding-top: 20px;
+  text-align: justify;
+}
+
+.images {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.images img {
+  height: 150px;
+  margin: 10px;
+  padding-bottom: 100px;
+}
+/****************************************************/
+/*styles pour le formulaire d'inscription           */
+/****************************************************/
+
+.inscription{
+	margin-top: 8%;
+	margin-left:35%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
+}
+
+.inscription input{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 10px;
+	margin-left: 20px;
+	border-width: 2px;
+	text-align: center;
+	font-size: 12px;
+	letter-spacing: 2px;
+	border-radius: 10px;
+	color: BLACK;
+	width: 200px;
+	height: 25px;
+}
+
+.inscription input[type='submit']:hover{
+	background-color: #E6E6E6;
+	border-style: solid;
+	border-width: 2px;
+	border-color: red;
+	font-size: 14px;
+	letter-spacing: 2px;
+	color: BLACK;
+	transition:0.5s;
+}
+
+
+/****************************************************/
+/*styles pour le formulaire de connexion            */
+/****************************************************/
+
+.contentConnexion{
+	margin-top: 10%;
+	margin-left:35%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
+}
+
+.contentConnexion .btnIdent{
+	margin-top: 20px;
+}
+
+.contentConnexion .btn input{
+	background-color: #FAFAFA;
+  border-style: solid;
+	margin-top: 10px;
+	margin-left: 20px;
+  border-width: 2px;
+  border-color: orange;
+	text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: BLACK;
+	border-radius: 10px;
+	width: 400px;
+	height: 40px;
+}
+
+.contentConnexion .btn input[type='submit']:hover{
+	background-color: #E6E6E6;
+	border-style: solid;
+	border-width: 2px;
+	border-color: red;
+	font-size: 14px;
+	letter-spacing: 1px;
+	color: BLACK;
+	transition:0.5s;
+}
+
+.contentConnexion .btn #deconexion{
+	width: 400px;
+			text-transform: uppercase;
+}
+.contentConnexion .btn #inscription{
+	width: 400px;
+			text-transform: uppercase;
+}
+
+.contentConnexion .btn a{
+	font-size: 10px;
+	text-transform: uppercase;
+	background-color: #F5ECCE;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	letter-spacing: 2px;
+	color: BLACK;
+	margin: 60px;
+}
+
+
+.contentConnexion .btn input[type='reset']{
+		width: 193px;
+		text-transform: uppercase;
+}
+
+.contentConnexion .btn input[type='submit']:hover{
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	transition:0.5s;
+}
+
+.contentConnexion .btnIdent input[type='reset']:hover{
+	background-color: #F4FA58;
+	border-style: solid;
+	border-width: 2px;
+	border-color: orange;
+	font-size: 16px;
+	letter-spacing: 2px;
+	color: BLACK;
+	transition:0.5s;
+}
+
+.listeplat{
+	width:100%;
+	font-size: 20px;
+}
+
+.listeplat .content{
+	display: inline-block;
+	width: 50px;
+}
+
+.unPlat{
+	display: inline-block;
+	margin: 0 5px;
+}
+.label{
+	display: inline-block;
+	text-align: left;
+}
+
+.bouton{
+	/*display: inline-block;
+	position:right;
+	margin-left: 140px;*/
+}
+.labelBouton{
+	display: flex;
+	justify-content: space-between;
+}
