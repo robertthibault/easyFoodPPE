@@ -1,18 +1,38 @@
 <?php
 
-if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
+  if(isset($_POST['Valider'])){
+    if (isset($_POST['email']) && isset($_POST['mdp'])) {
+      $_SESSION['identification'] = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
+      if($_SESSION['identification'] != NULL){
+        //$_SESSION['identification']=array($unUtilisateur);
+        $_SESSION['easyFoodMP']='GestPlat';
+        include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+      }
+      else {
+          $msg = 'Email ou mot de passe incorrect !';
+      }
+    }
+ }
 
+/*
+  if(isset($_POST['inscrire'])){
+    $_SESSION['easyFoodMP']="Inscription";
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+  }
+*/
 
-    $formulaireConnexion = new Formulaire('post', 'index.php', 'fConnexion', 'fConnexion');
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('emailClient', 'Identifiant :'), 1);
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('login', 'login', ''   , 1, '',0),1);
+    $formulaireConnexion = new Formulaire('get', 'index.php', 'formConnexion', 'formUniforme');
+
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel("Veuillez vous connecter"), 1);
     $formulaireConnexion->ajouterComposantTab();
 
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabelFor('mdp', 'Mot de passe :'), 1);
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputPass('mdp', 'mdp', '' ,1),1);
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputTexte('email', 'email', '' , 1, 'Email',0),1);
     $formulaireConnexion->ajouterComposantTab();
 
-    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion-> creerInputSubmit('submitConnex', 'submitConnex', 'Valider'),2);
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerInputPass('mdp', 'mdp', '', 1,'saisir votre mot de passe', 0), 1);
+    $formulaireConnexion->ajouterComposantTab();
+
+    $formulaireConnexion->ajouterComposantLigne($formulaireConnexion-> creerInputSubmit('Valider', 'Valider', 'Valider'),2);
     $formulaireConnexion->ajouterComposantTab();
 
     $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel($messageErreurConnexion, "messageErreurConnexion"),2);
@@ -20,14 +40,21 @@ if(!isset($_SESSION['identification']) || !$_SESSION['identification']){
 
     $formulaireConnexion->creerFormulaire();
 
-    include_once 'vues/squeletteConnexion.php';
+    $formulairePourInscription = new Formulaire('post', 'index.php', 'formulairePourInscription', 'formUniforme');
+    $formulairePourInscription->ajouterComposantLigne($formulairePourInscription->creerInputSubmit('inscrire', 'inscrire', 'Pas encore inscrit ?'),2);
+    $formulairePourInscription->ajouterComposantTab();
 
-}
-else{
+    $formulairePourInscription->creerFormulaire();
+
+    include 'vues/squeletteConnexion.php';
+ //}
+/*
+  else{
     $_SESSION['identification']=array();
-    $_SESSION['menuPrincipal']="accueil";
+    $_SESSION['easyFoodMP']="Accueil";
     header('location: index.php');
 
-}
+  }
+ */
 
 ?>

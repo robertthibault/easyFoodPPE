@@ -1,20 +1,18 @@
-<div id="conteneur">
+<div classe="conteneur">
+	<header>
+		<?php include_once 'haut.php' ;?>
+	</header>
 
-<div id="header">
-		<?php include 'haut.php' ;?>
+	<div id="formUniforme">
+				<main>
+					<?php  $formulaireConnexion->afficherFormulaire();
+							 	 $formulairePourInscription->afficherFormulaire();
+					?>
+			 </main>
 	</div>
 
-	<div id="content">
-		<div id="connexion">
-			<div id='boiteConnex'>
-				<div id ='titre'>Veuillez vous identifier</div>	
-				<?php $formulaireConnexion->afficherFormulaire(); ?>
-			</div>
-		</div>
-	</div>
+	<footer>
+		<?php include_once 'bas.php' ;?>
+	</footer>
 
-	<div id="bas">
-		<?php  include 'bas.php' ;?> 
-	</div>
-	
 </div>

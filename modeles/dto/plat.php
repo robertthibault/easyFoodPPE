@@ -38,7 +38,7 @@ class Plat
   public function setIDT($unIdT){
     $this->idT=$unIdT;
   }
-  public function getnomP(){
+  public function getNomP(){
     return $this->nomP;
   }
   public function setNomP($unNomP){
@@ -65,7 +65,6 @@ class Plat
   public function getDescriptionP(){
     return $this->descriptionP;
   }
-  
   public function setDescriptionP($uneDescriptionP){
     $this->descriptionP = $uneDescriptionP;
   }

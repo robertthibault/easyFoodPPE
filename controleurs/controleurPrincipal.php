@@ -6,69 +6,70 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 
-require 'controleurs/controleurGestPlat.php';
+/*----------------------------------------------------------*/
+/*--------session du menu principal avec accueil par defaut----------------------*/
+/*----------------------------------------------------------*/
 
-
-/*
-if(isset($_GET['menuPrincipalC'])){
-	$_SESSION['menuPrincipalC']= $_GET['menuPrincipalC'];
-
-if(isset($_GET['menuPrincipal'])){
-	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
-
+if(isset($_GET['easyFoodMP'])){
+	$_SESSION['easyFoodMP']= $_GET['easyFoodMP'];
 }
-else
-{
-	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="accueil";
+else{
+	if(!isset($_SESSION['easyFoodMP'])){
+		$_SESSION['easyFoodMP']="Connexion";
 	}
 }
 
-
+/*
  //////Message Erreur
  $messageErreurConnexion ='';
  if(isset($_POST['email'] , $_POST['mdp'])){
-    $unUtilisateur = new Utilisateur($_POST['email'] , $_POST['mdp']);
+    $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
+
     $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
     if($_SESSION['identification']){
         $_SESSION['menuPrincipal']="accueil";
     }
     else {
-        $messageErreurConnexion = 'Login ou mot de passe incorrect !';
+        $messageErreurConnexion = 'Email ou mot de passe incorrect !';
     }
  }
- 
- echo '5';
-
-
-$menuPrincipal = new Menu("menuPrincipal");
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("accueil", "Accueil"));
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("plat", "Les Plats"));
-
-echo '2';
-
-$menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Connexion"));
-
-/*
-if(isset($_SESSION['identification']) && $_SESSION['identification']){
-    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("proposer", "Proposer un plat"));
-    $menuPrincipal->ajouterComposant($menuPrincipal->creerItemLien("connexion", "Déconnexion"));
- }
- else{
-    
- }
- */
- 
-echo '3';
-
-$menu = $menuPrincipal->creerMenu('menuPrincipal');
-
-echo $menu;
-echo '4';
-
-
-include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
-
-include_once dispatcher::dispatch($_SESSION['menuPrincipalC']);
 
 */
+$easyFoodMP = new Menu("menuP");
+
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Accueil','Accueil'));
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Les plats', 'Plat'));
+if (!isset($_SESSION['identification'])) {
+	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Connexion','Connexion'));
+}
+else{
+	if($_SESSION['identification']['TYPEU']== 'client'){
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Panier','Panier'));
+	}
+	elseif ($_SESSION['identification']['TYPEU'] == 'restaurateur') {
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Gestion des plats','GestPlat'));
+	}
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien($_SESSION['identification']['PRENOMU'] . " " . $_SESSION['identification']['NOMU'], 'MonCompte'));
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Déconnexion','Connexion'));
+}
+
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire inscription ----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['inscrire'])) {
+	$_SESSION['menuPrincipal'] = 'Inscription';
+}
+
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire connexion ----------*/
+/*----------------------------------------------------------*/
+/*
+if (isset($_POST['Valider'])) {
+	$_SESSION['menuPrincipal'] = 'Connexion';
+}
+*/
+
+$leMenuP = $easyFoodMP->creerMenu('easyFoodMP');
+include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+
+?>

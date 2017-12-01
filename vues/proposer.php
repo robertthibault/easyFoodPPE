@@ -1,7 +1,7 @@
 <div>
 
   <?php
-    echo $formulaireProposer->afficherFormulaire();
+    $formulaireProposer->afficherFormulaire();
     if (isset($msg)) {
       echo $msg;
     }

@@ -51,38 +51,68 @@ class DBConnex extends PDO{
 	}
 
 	public function update($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 
 	public function delete($sql){
-		return $this->exec($sql) ;
+		if ($this->exec($sql) > 0){
+			return true;
+		}
+		return false;
 	}
 }
 
 class utilisateurDAO{
 
+/*
     public static function verification(Utilisateur $utilisateur){
-        $sql = "select login from Utilisateur where login = '" . $utilisateur->getLogin() . "' and  mdp = '" .  md5($utilisateur->getMdp()) ."'";
+        $sql = "SELECT * FROM utilisateur WHERE EMAILU = '" . $utilisateur->getEmail() . "' and  MOTDEPASSEU = '" .  md5($utilisateur->getMdp()) ."';";
+  */
+    public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
+        $sql = "select IDU, NOMU, PRENOMU, TYPEU from UTILISATEUR where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
         $login = DBConnex::getInstance()->queryFetchFirstRow($sql);
-        return $login[0];
+        return $login;
     }
 
-		public static function dernierNumero(){
-			$sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
-			$num = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return intval($num[0]) + 1;
-		}
-	
-	public static function ajouter(Utilisateur $utilisateur){
-	    $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
-                VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','" . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
-	    return DBConnex::getInstance()->insert($sql);
-	}
+	 public static function dernierNumero(){
+		 $sql = "SELECT MAX(IDU) FROM UTILISATEUR;";
+		 $num = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		 return intval($num[0]) + 1;
+	 }
+
+	 public static function ajouter(Utilisateur $utilisateur){
+	     $sql = "INSERT INTO UTILISATEUR(IDU, CIVILITEU, NOMU, PRENOMU, EMAILU, MOTDEPASSEU, TYPEU)
+                 VALUES ('" . $utilisateur->getId() . "','" . $utilisateur->getCivilite() . "','" . $utilisateur->getNom() . "','" . $utilisateur->getPrenom() . "','"
+								 . $utilisateur->getEmail() . "','" . $utilisateur->getMdp() . "','" . $utilisateur->getTypeU() . "')";
+	     return DBConnex::getInstance()->insert($sql);
+	 }
+
+	 public static function modifier(Utilisateur $utilisateur){
+	     $sql = "UPDATE UTILISATEUR
+			 				SET NOMU='" . $utilisateur->getNom() . "', PRENOMU='" . $utilisateur->getPrenom() . "', EMAILU='"
+							. $utilisateur->getEmail() . "', MOTDEPASSEU='" . $utilisateur->getMdp() . "', TYPEU='" . $utilisateur->getTypeU() . "'
+							WHERE IDU = " . $utilisateur->getId();
+	     return DBConnex::getInstance()->update($sql);
+	 }
+
+	 public static function supprimer($unIdU){
+		 $sql = "DELETE FROM UTILISATERUR
+						 WHERE IDU=".$unIdU;
+	  return DBConnex::getInstance()->delete($sql);
+	 }
+	//NOTEEASYFOOD, COMMENTAIREEASYFOOD, COMMENTAIREEASYFOODVISIBLE, NUMADRC, RUEADRC, CPR, VILLEC)
+	//. $utilisateur->getNoteAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFood() . "','" . $utilisateur->getCommentaireAEasyFoodVisible() . "','" . $utilisateur->getNumAdresse() .
+	//"','" . $utilisateur->getRueAdresse() . "','" . $utilisateur->getCodePostale() . "','" . $utilisateur->getVille()
 
 		public static function sonResto($unIdU){
-			$sql = "SELECT * FROM resto WHERE IDU=".$unIdU;
+			$sql = "SELECT * FROM RESTO WHERE IDU=".$unIdU;
 			$resto = DBConnex::getInstance()->queryFetchFirstRow($sql);
-			return $resto[0];
+			if (!empty($resto)) {
+				return $resto;
+			}
 		}
 }
 
@@ -134,20 +164,34 @@ class RestoDAO{
 
 class PlatDAO{
 
-	//Paramètres : numéro id, nom du champ de la tbale
+	//Paramètres : numéro id, nom du champ de la table
 	public static function lesPlatsParId($unId, $champ){
 		$result = [];
 		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
 		if(!empty($liste)){
 			foreach($liste as $plat){
-				$unPlat = new Plat(PlatDAO::dernierNumero(), $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+				$unPlat = new Plat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
 				$unPlat->hydrate($plat);
 				$result[] = $unPlat;
 			}
 		}
 		return $result;
 	}
+
+	public static function lePlatParId($unId, $champ){
+		$sql = "SELECT * FROM PLAT WHERE ".$champ."=".$unId;
+		$plat = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$unPlat = new Plat($plat['IDP'], $plat['IDR'], $plat['IDT'], $plat['NOMP'], $plat['PRIXFOURNISSEURP'], $plat['PRIXCLIENTP'], $plat['PLATVISIBLE'], $plat['DESCRIPTIONP']);
+		return $unPlat;
+	}
+
+	public static function sonTypePlat($unIdT){
+		$sql = "SELECT TYPE_PLAT.* FROM TYPE_PLAT, PLAT WHERE PLAT.IDT=". $unIdT . " AND PLAT.IDT=TYPE_PLAT.IDT";
+		$typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
+		$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
+		return $unTypePlat;
+		}
 
 	public static function ajouter(Plat $plat){
 		$sql = "INSERT INTO PLAT
@@ -160,18 +204,17 @@ class PlatDAO{
 						"','".$plat->getPlatVisible().
 						"','".$plat->getDescriptionP().
 						"')";
-		echo $sql;
 		return DBConnex::getInstance()->insert($sql);
 	}
 
 	public static function modifier(Plat $plat){
-		$sql = "UPDATE plat
+		$sql = "UPDATE PLAT
 						SET IDR = '" . $plat->getIdR() . "',
 								IDT = '" . $plat->getIdT() . "',
 								NOMP = '" . $plat->getNomP() . "',
 								PRIXFOURNISSEURP = '" . $plat->getPrixFournisseurP() . "',
-								PRIXCLIENTP	= " . $plat->getPrixClientP() . "',
-								DESCRIPTIONP	= " . $plat->getDescriptionP() . "
+								PRIXCLIENTP	= '" . $plat->getPrixClientP() . "',
+								DESCRIPTIONP	= '" . $plat->getDescriptionP() . "'
 						WHERE IDP = " . $plat->getIdP();
 		return DBConnex::getInstance()->update($sql);
 	}
@@ -182,3 +225,22 @@ class PlatDAO{
 		return intval($num[0]) + 1;
 	}
 }
+/*
+class CommentaireDAO{
+	  public static function selectCommentaire()
+	  {
+	    $sql = "SELECT C.MAIL, R.NOMR, `NOTERAPIDITE`, `NOTEQUALITE`, `NOTETEMP`, `NOTECOUT`, `COMMENTAIRE` FROM `evaluer` AS E, `client` AS C, `resto` AS R WHERE R.IDR = E.IDR AND C.IDU = E.IDU";
+	    $liste = DBConnex::getInstance()->queryFetchAll($sql);
+	    if (count($liste) > 0)
+	    {
+	      foreach ($liste as $note)
+	      {
+	        $uneNote = new Evaluer($note['MAIL'], $note['NOMR'], $note['NOTERAPIDITE'],
+	                              $note['NOTEQUALITE'], $note['NOTETEMP'],
+	                              $note['NOTECOUT'], $note['COMMENTAIRE']);
+	        $result[] = $uneNote;
+	      }
+	    }
+	    return $result;
+	  }
+	}*/

@@ -6,12 +6,12 @@
 
 	<div id="content">
 		<div id="formUniforme">
-			<main>
-				<?php $formulaireInscription->afficherFormulaire();
+				<p id ='titre'>Veuillez modifier vos informations</p>
+				<?php $formulaireMonCompte->afficherFormulaire();
 				if(isset($msg)){
 					echo $msg;
 				}?>
-		 </main>
+
 		</div>
 		</div>
 	</div>
