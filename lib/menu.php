@@ -58,17 +58,17 @@ class Menu{
 	}
 
 	public function creerMenu($composantActif){
-		$menu = "<ul class = '" .  $this->style . "'>";
+		$menu = '<ul class = "' .  $this->style . '">';
 		foreach($this->composants as $composant){
-				$menu .= "<li>";
-				$menu .= "<a href='index.php?". $menu ;
-				$menu .= "=" .$composant[0] . "' >";
-				$menu .= "<span>" . $composant[1] ."</span>";
-				$menu .= "</a>";
-				$menu .= "</li>";
+				$menu .= '<li>';
+				$menu .= '<a href="index.php?menuPrincipal' ;
+				$menu .= '=' .$composant[0] . '" >';
+				$menu .= '<span>' . $composant[1] .'</span>';
+				$menu .= '</a>';
+				$menu .= '</li>';
 
 		}
-		$menu .= "</ul>";
+		$menu .= '</ul>';
 		return $menu ;
 	}
 

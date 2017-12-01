@@ -1,16 +1,14 @@
 <div classe="conteneur">
 	<header>
-		<?php //include_once 'haut.php' ;?>
+		<?php include_once 'haut.php' ;?>
 	</header>
 
-	<div id="Connexion">
-			<p id ='titre'>Veuillez vous connecter</p>
+	<div id="formUniforme">
 				<main>
-					<?php
-						$formulaireConnexion->afficherFormulaire();
-						$formulairePourInscription->afficherFormulaire()
+					<?php  $formulaireConnexion->afficherFormulaire();
+							 	 $formulairePourInscription->afficherFormulaire();
 					?>
-			</main>
+			 </main>
 	</div>
 
 	<footer>

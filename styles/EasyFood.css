@@ -13,8 +13,9 @@ main {
 	margin-left: 200px;
 	padding-top: 0px;
 	min-height: 600px;
- 	font-size: 0px;
+ 	font-size: 15px;
  	margin-top:200px;
+	font-weight: bold;
 }
 
 /****************************************************/
@@ -39,26 +40,27 @@ header {
 }
 
 .formLogo{
-	height: 90px;
-	/*position: fixed;*/
-	width: 100px;
+	height: 70px;
+	position: fixed;
+	width: 60px;
+
 	top: 0;
 	left: 0;
 	z-index: 10;
 }
 
 #logo {
-	margin-top: 10px;
-	width:90px;
-	margin-left:50px;
-
+	margin-top: 0px;
+	width:60px;
+	height: 70px;
+	margin-left:0px;
 }
 #separateur_menuP{
 	width: 100%;
 	border: none;
 	background-color: red;
-	margin-top: 120px;
-	height: 7px;
+	margin-top: 18px;
+	height: 5px;
 }
 
 /****************************************************/
@@ -151,10 +153,10 @@ nav.menuPrincipal ul li .actif {
   padding-bottom: 100px;
 }
 /****************************************************/
-/*styles pour le formulaire d'inscription           */
+/*styles pour le formulaire généralisé           */
 /****************************************************/
 
-.inscription{
+.formUniforme{
 	margin-top: 8%;
 	margin-left:35%;
 	height: 100px;
@@ -162,121 +164,28 @@ nav.menuPrincipal ul li .actif {
 	display: inline-block;
 }
 
-.inscription input{
+.formUniforme input{
 	background-color: #FAFAFA;
 	border-style: solid;
 	margin-top: 10px;
 	margin-left: 20px;
 	border-width: 2px;
+	border-color: #474C4B;
 	text-align: center;
 	font-size: 12px;
 	letter-spacing: 2px;
-	border-radius: 10px;
-	color: BLACK;
-	width: 200px;
+	color: black;
+	width: 250px;
 	height: 25px;
 }
 
-.inscription input[type='submit']:hover{
+.formUniforme input[type='submit']:hover{
 	background-color: #E6E6E6;
 	border-style: solid;
 	border-width: 2px;
 	border-color: red;
-	font-size: 14px;
+	font-size: 15px;
 	letter-spacing: 2px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-
-/****************************************************/
-/*styles pour le formulaire de connexion            */
-/****************************************************/
-
-.contentConnexion{
-	margin-top: 10%;
-	margin-left:35%;
-	height: 100px;
-	z-index: 10;
-	display: inline-block;
-}
-
-.contentConnexion .btnIdent{
-	margin-top: 20px;
-}
-
-.contentConnexion .btn input{
-	background-color: #FAFAFA;
-  border-style: solid;
-	margin-top: 10px;
-	margin-left: 20px;
-  border-width: 2px;
-  border-color: orange;
-	text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: BLACK;
-	border-radius: 10px;
-	width: 400px;
-	height: 40px;
-}
-
-.contentConnexion .btn input[type='submit']:hover{
-	background-color: #E6E6E6;
-	border-style: solid;
-	border-width: 2px;
-	border-color: red;
-	font-size: 14px;
-	letter-spacing: 1px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-.contentConnexion .btn #deconexion{
-	width: 400px;
-			text-transform: uppercase;
-}
-.contentConnexion .btn #inscription{
-	width: 400px;
-			text-transform: uppercase;
-}
-
-.contentConnexion .btn a{
-	font-size: 10px;
-	text-transform: uppercase;
-	background-color: #F5ECCE;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	letter-spacing: 2px;
-	color: BLACK;
-	margin: 60px;
-}
-
-
-.contentConnexion .btn input[type='reset']{
-		width: 193px;
-		text-transform: uppercase;
-}
-
-.contentConnexion .btn input[type='submit']:hover{
-	background-color: #F4FA58;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	font-size: 16px;
-	letter-spacing: 2px;
-	color: BLACK;
-	transition:0.5s;
-}
-
-.contentConnexion .btnIdent input[type='reset']:hover{
-	background-color: #F4FA58;
-	border-style: solid;
-	border-width: 2px;
-	border-color: orange;
-	font-size: 16px;
-	letter-spacing: 2px;
-	color: BLACK;
+	color: red;
 	transition:0.5s;
 }

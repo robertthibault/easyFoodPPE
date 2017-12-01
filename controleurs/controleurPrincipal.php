@@ -9,6 +9,7 @@ require_once 'modeles/dao.php';
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut----------------------*/
 /*----------------------------------------------------------*/
+
 if(isset($_GET['easyFoodMP'])){
 	$_SESSION['easyFoodMP']= $_GET['easyFoodMP'];
 }
@@ -17,8 +18,8 @@ else{
 		$_SESSION['easyFoodMP']="Connexion";
 	}
 }
-/*
 
+/*
  //////Message Erreur
  $messageErreurConnexion ='';
  if(isset($_POST['email'] , $_POST['mdp'])){
@@ -33,17 +34,42 @@ else{
     }
  }
 
-
+*/
 $easyFoodMP = new Menu("menuP");
 
- if (!isset($_SESSION['identification'])) {
- 	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('connexion',"Connexion"));
- }else {
- $easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('InfoClient',"Bienvenue : " . $_SESSION['identification'][1] . $_SESSION['identification'][2] . $_SESSION['identification'][3]));
- }
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Accueil','Accueil'));
+$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Les plats', 'Plat'));
+if (!isset($_SESSION['identification'])) {
+	$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Connexion','Connexion'));
+}
+else{
+	if($_SESSION['identification']['TYPEU']== 'client'){
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Panier','Panier'));
+	}
+	elseif ($_SESSION['identification']['TYPEU'] == 'restaurateur') {
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Gestion des plats','GestPlat'));
+	}
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien($_SESSION['identification']['PRENOMU'] . " " . $_SESSION['identification']['NOMU'], 'MonCompte'));
+		$easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Déconnexion','Connexion'));
+}
 
-$menuPrincipal = $easyFoodMP->creerMenu('easyFoodMP');
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire inscription ----------*/
+/*----------------------------------------------------------*/
+if (isset($_POST['inscrire'])) {
+	$_SESSION['menuPrincipal'] = 'Inscription';
+}
+
+/*----------------------------------------------------------*/
+/*-------- Affiche le formulaire connexion ----------*/
+/*----------------------------------------------------------*/
+/*
+if (isset($_POST['Valider'])) {
+	$_SESSION['menuPrincipal'] = 'Connexion';
+}
 */
 
+$leMenuP = $easyFoodMP->creerMenu('easyFoodMP');
 include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+
 ?>
