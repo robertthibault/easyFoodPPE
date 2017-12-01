@@ -189,3 +189,33 @@ nav.menuPrincipal ul li .actif {
 	color: red;
 	transition:0.5s;
 }
+/*************************************************************/
+
+.listeplat{
+	width:100%;
+	font-size: 20px;
+}
+
+.listeplat .content{
+	display: inline-block;
+	width: 50px;
+}
+
+.unPlat{
+	display: inline-block;
+	margin: 0 5px;
+}
+.label{
+	display: inline-block;
+	text-align: left;
+}
+
+.bouton{
+	/*display: inline-block;
+	position:right;
+	margin-left: 140px;*/
+}
+.labelBouton{
+	display: flex;
+	justify-content: space-between;
+}

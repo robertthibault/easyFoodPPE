@@ -37,7 +37,7 @@ class Menu{
 			}
 			else{
 				$menu .= "<li>";
-				$menu .= "<a href='index.php?menuPrincipal=" . $composant[0] . "'>";
+				$menu .= "<a href='index.php?easyFoodMP=" . $composant[0] . "'>";
 				//$menu .= "<img src = '" . $composant[1] . "' />";
 				$menu .= "</a>";
 				$menu .= "<br/><span>" . $composant[2] . "</span>";
@@ -61,7 +61,7 @@ class Menu{
 		$menu = '<ul class = "' .  $this->style . '">';
 		foreach($this->composants as $composant){
 				$menu .= '<li>';
-				$menu .= '<a href="index.php?menuPrincipal' ;
+				$menu .= '<a href="index.php?easyFoodMP' ;
 				$menu .= '=' .$composant[0] . '" >';
 				$menu .= '<span>' . $composant[1] .'</span>';
 				$menu .= '</a>';

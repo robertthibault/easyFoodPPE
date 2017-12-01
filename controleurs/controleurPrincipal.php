@@ -15,7 +15,7 @@ if(isset($_GET['easyFoodMP'])){
 }
 else{
 	if(!isset($_SESSION['easyFoodMP'])){
-		$_SESSION['easyFoodMP']="Connexion";
+		$_SESSION['easyFoodMP']="Accueil";
 	}
 }
 
@@ -27,7 +27,7 @@ else{
 
     $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
     if($_SESSION['identification']){
-        $_SESSION['menuPrincipal']="accueil";
+        $_SESSION['easyFoodMP']="accueil";
     }
     else {
         $messageErreurConnexion = 'Email ou mot de passe incorrect !';
@@ -57,7 +57,7 @@ else{
 /*-------- Affiche le formulaire inscription ----------*/
 /*----------------------------------------------------------*/
 if (isset($_POST['inscrire'])) {
-	$_SESSION['menuPrincipal'] = 'Inscription';
+	$_SESSION['easyFoodMP'] = 'Inscription';
 }
 
 /*----------------------------------------------------------*/
@@ -65,7 +65,7 @@ if (isset($_POST['inscrire'])) {
 /*----------------------------------------------------------*/
 /*
 if (isset($_POST['Valider'])) {
-	$_SESSION['menuPrincipal'] = 'Connexion';
+	$_SESSION['easyFoodMP'] = 'Connexion';
 }
 */
 
