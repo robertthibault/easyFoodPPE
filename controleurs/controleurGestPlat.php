@@ -1,16 +1,29 @@
 <?php
 
-  //Temporaire
-  $_SESSION['identification']['NOMU'] = "Sokingu";
-  $_SESSION['identification']['PRENOMU'] = "Aleriane";
-  $_SESSION['identification']['IDU'] = 6;
-  //Temporaire
   $sonResto = utilisateurDAO::sonResto($_SESSION['identification']['IDU']);
-  $lesPlats = PlatDAO::lesPlatsParId($sonResto, 'IDR');
+  $lesPlats = PlatDAO::lesPlatsParId($sonResto['IDR'], 'IDR');
+  if (empty($lesPlats)) {
+    $msg = "Vous n'avez aucun plat.";
+  }
 
   if (isset($_POST['modifier'])) {
-    $_SESSION['idPlat'] = $_POST['idPlat'];
-    include_once 'controleurs/controleurModifPlat.php';
+    foreach ($lesPlats as $plat) {
+      if($_POST['idPlat'] == $plat->getIdP()){
+        $_SESSION['idPlat'] = $_POST['idPlat'];
+        $_SESSION['easyFoodMP']="ModifPlat";
+        include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+        break;
+      }else{
+        $msg = 'Ce plat ne fait pas partie des vôtres.';
+      }
+    }
+  }
+
+  if (isset($_POST['btnProposer'])) {
+    foreach ($lesPlats as $plat) {
+        $_SESSION['easyFoodMP']="Proposer";
+        include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+    }
   }
 
   $formulaireGestPlat = new Formulaire('post', 'index.php', 'fGestPlat', '');
@@ -18,10 +31,13 @@
   $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerInputTexte('idPlat', 'idPlat', '', 1, 'Numéro du plat à modifier'), 1);
   $formulaireGestPlat->ajouterComposantTab();
   $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerInputSubmit('modifier', 'modifier', 'Modifier'), 1);
+  if(isset($msg)){
+    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('msg', $msg, 1), 1);
+  }
   $formulaireGestPlat->ajouterComposantTab();
 
   foreach ($lesPlats as $plat) {
-    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('', '- - - - - - - - - - - - - - - - - - - - - - - - - -'), 1);
+    $formulaireGestPlat->ajouterComposantLigne($formulaireGestPlat->creerLabelFor('', '- - - - - - - - - - - - - - - - - - - - - - - -'), 1);
     $formulaireGestPlat->ajouterComposantTab();
     if ($plat->getPlatVisible() == 1) {
       $estVisible = "Visible";
@@ -52,6 +68,11 @@
   }
 
   $formulaireGestPlat->creerFormulaire();
+
+  $formulaireBtnProposer = new Formulaire('post', 'index.php', 'fBtnAjouter', '');
+  $formulaireBtnProposer->ajouterComposantLigne($formulaireBtnProposer->creerInputSubmit('btnProposer', 'btnProposer', 'Proposer un plat'), 1);
+  $formulaireBtnProposer->ajouterComposantTab();
+  $formulaireBtnProposer->creerFormulaire();
 
   include_once "vues/squeletteGestPlat.php";
 

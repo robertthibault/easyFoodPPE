@@ -6,35 +6,35 @@ require_once 'lib/tableau.php';
 require_once 'lib/dispatcher.php';
 require_once 'modeles/dao.php';
 
-
 /*----------------------------------------------------------*/
 /*--------session du menu principal avec accueil par defaut----------------------*/
 /*----------------------------------------------------------*/
 
-if(isset($_GET['menuPrincipal'])){
-	$_SESSION['menuPrincipal']= $_GET['menuPrincipal'];
+if(isset($_GET['easyFoodMP'])){
+	$_SESSION['easyFoodMP']= $_GET['easyFoodMP'];
 }
 else{
-	if(!isset($_SESSION['menuPrincipal'])){
-		$_SESSION['menuPrincipal']="Accueil";
+	if(!isset($_SESSION['easyFoodMP'])){
+		$_SESSION['easyFoodMP']="Connexion";
 	}
 }
 
+/*
+ //////Message Erreur
+ $messageErreurConnexion ='';
+ if(isset($_POST['email'] , $_POST['mdp'])){
+    $unUtilisateur = new Utilisateur('', '', '', $_POST['email'], '', $_POST['mdp'], '', '', '', '', '', '', '');
 
-$messageErreurConnexion ='';
-if (isset($_POST['email']) && isset($_POST['mdp'])) {
-	$utilisateur = new Utilisateur('', '', '', '', $_POST['email'], $_POST['mdp'], '', '', '', '', '', '', '', '');
-	$_SESSION['identification'] = utilisateurDAO::verification($utilisateur);
-	if($_SESSION['identification'] != NULL){
-		$_SESSION['easyFoodMP']="Accueil";
-		include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
-	}
-	else {
-		$messageErreurConnexion = 'Email ou mot de passe incorrect !';
-	}
-}
+    $_SESSION['identification'] = utilisateurDAO::verification($unUtilisateur);
+    if($_SESSION['identification']){
+        $_SESSION['menuPrincipal']="accueil";
+    }
+    else {
+        $messageErreurConnexion = 'Email ou mot de passe incorrect !';
+    }
+ }
 
-
+*/
 $easyFoodMP = new Menu("menuP");
 
 $easyFoodMP->ajouterComposant($easyFoodMP->creerItemLien('Accueil','Accueil'));
@@ -69,8 +69,7 @@ if (isset($_POST['Valider'])) {
 }
 */
 
-$leMenuP = $easyFoodMP->creerMenu('menuPrincipal');
-include_once dispatcher::dispatch($_SESSION['menuPrincipal']);
-
+$leMenuP = $easyFoodMP->creerMenu('easyFoodMP');
+include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
 
 ?>

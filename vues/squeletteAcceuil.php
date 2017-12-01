@@ -1,6 +1,6 @@
 <div class="conteneur">
 	<header>
-		<?php include 'haut.php' ;?>
+		<?php include_once 'haut.php' ;?>
 	</header>
 	<main>
 		<div class='texteAccueil'>
@@ -10,6 +10,6 @@
 		</div>
 	</main>
 	<footer>
-		<?php include 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</footer>
 </div>
