@@ -72,7 +72,7 @@ class utilisateurDAO{
         $sql = "SELECT * FROM utilisateur WHERE EMAILU = '" . $utilisateur->getEmail() . "' and  MOTDEPASSEU = '" .  md5($utilisateur->getMdp()) ."';";
 */
     public static function verification($unEmailUtilisateur, $unMdpUtilisateur){
-        $sql = "select IDU, NOMU, PRENOMU, TYPEU from UTILISATEUR where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
+        $sql = "select * from UTILISATEUR where EMAILU = '" . $unEmailUtilisateur . "' and  MOTDEPASSEU = '" .  md5($unMdpUtilisateur) ."';";
     		$login = DBConnex::getInstance()->queryFetchFirstRow($sql);
         return $login;
     }

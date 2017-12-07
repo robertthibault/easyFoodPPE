@@ -1,12 +1,15 @@
 <?php
 
+if(!isset($_SESSION['identification'])){
+	// || !$_SESSION['identification']
   if(isset($_POST['Valider'])){
     if (isset($_POST['email']) && isset($_POST['mdp'])) {
       $_SESSION['identification'] = utilisateurDAO::verification($_POST['email'], $_POST['mdp']);
       if($_SESSION['identification'] != NULL){
         //$_SESSION['identification']=array($unUtilisateur);
         $_SESSION['easyFoodMP']='GestPlat';
-        include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+        //include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+		header('location: index.php');
       }
     }
   }
@@ -31,5 +34,10 @@
   $formulairePourInscription->creerFormulaire();
 
     include 'vues/squeletteConnexion.php';
-
+}
+else{
+    $_SESSION['identification']= NULL ;
+    $_SESSION['easyFoodMP']="Accueil";
+    header('location: index.php');
+}
 ?>
