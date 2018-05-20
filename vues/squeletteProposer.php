@@ -5,11 +5,13 @@
 	</div>
 
 	<div id="content">
-		<?php include_once "proposer.php" ?>
+        <main>
+		    <?php include_once "proposer.php" ?>
+        </main>
 	</div>
 
 	<div id="bas">
-		<?php //include 'bas.php' ;?>
+		<?php include 'bas.php' ;?>
 	</div>
 
 </div>

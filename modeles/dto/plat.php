@@ -1,42 +1,41 @@
 <?php
 
-class Plat
-{
+class Plat{
   private $idP;
-  private $idR;
-  private $idT;
+  private $resto;
+  private $typePlat;
   private $nomP;
   private $prixFournisseurP;
   private $prixClientP;
   private $platVisible;
   private $descriptionP;
 
-  function __construct($unIdP,$unIdR,$unIdT,$unNomP,$unPrixFournisseurP,$unPrixClientP,$estVisible,$uneDescriptionP)
+  function __construct($idP, $resto, $typePlat, $nomP, $prixFournisseurP, $prixClientP, $estVisible, $descriptionP)
   {
-    $this->idP = $unIdP;
-    $this->idR = $unIdR;
-    $this->idT = $unIdT;
-    $this->nomP = $unNomP;
-    $this->prixFournisseurP = $unPrixFournisseurP;
-    $this->prixClientP = $unPrixClientP;
+    $this->idP = $idP;
+    $this->resto = $resto;
+    $this->typePlat = $typePlat;
+    $this->nomP = $nomP;
+    $this->prixFournisseurP = $prixFournisseurP;
+    $this->prixClientP = $prixClientP;
     $this->platVisible = $estVisible;
-    $this->descriptionP = $uneDescriptionP;
+    $this->descriptionP = $descriptionP;
 
   }
   public function getIdP(){
     return $this->idP;
   }
-  public function getIdR(){
-    return $this->idR;
+  public function getResto(){
+    return $this->resto;
   }
-  public function setIdR($unIdR){
-    $this->idR = $unIdR;
+  public function setResto($resto){
+    $this->resto = $resto;
   }
-  public function getIdT(){
-    return $this->idT;
+  public function getTypePlat(){
+    return $this->typePlat;
   }
-  public function setIDT($unIdT){
-    $this->idT=$unIdT;
+  public function setTypePlat($typePlat){
+    $this->typePlat = $typePlat;
   }
   public function getNomP(){
     return $this->nomP;
@@ -70,14 +69,11 @@ class Plat
   }
 
   public function hydrate(array $donnees){
-		foreach ($donnees as $key => $value){
-			$method = 'set'.ucfirst($key);
-			if (method_exists($this, $method)){
-				$this->$method($value);
-			}
-		}
-	}
+      foreach ($donnees as $key => $value){
+          $method = 'set'.ucfirst($key);
+          if (method_exists($this, $method))
+              $this->$method($value);
+      }
+  }
 
 }
-
- ?>

@@ -1,6 +1,6 @@
 <?php
 
-$plats = PlatDAO::all();
+//$plats = PlatDAO::all();
 
 /*$formulairePlat = new Formulaire('post', 'index.php', 'fPlat', '');
 
@@ -48,9 +48,9 @@ $formulairePlat->creerFormulaire();
 */
 
 //------------------------------------------------------------------------------
-$tablePlat="<div class='lesPlats'>";
+/*$tablePlat="<div class='plats'>";
 foreach ($plats as $plat) {
-  $tablePlat .= "<div class='unPlat'>";
+  $tablePlat .= "<div class='plat'>";
           $tablePlat .= "<div class='image'>";
               $tablePlat .= "<img src='images/". $plat->getIdP() .".jpg' alt='plat". $plat->getIdP()."' align='middle'>";
           $tablePlat .= "</div >";
@@ -65,7 +65,7 @@ foreach ($plats as $plat) {
   $tablePlat .= "</div >";
 }
 
-$tablePlat .= "</div>";
+$tablePlat .= "</div>";*/
 
 include_once "vues/squelettePlat.php";
 
