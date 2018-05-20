@@ -2,31 +2,31 @@
 class Resto{
 
   private $idR;
-  private $idU;
+  private $utilisateur;
   private $nomR;
   private $numAdrr;
   private $rueAdrr;
   private $cpR;
   private $villeR;
 
-  function __construct($unIdU, $unNomR, $unNumAdrr, $uneRueAdrr, $unCpR, $uneVilleR){
-    $this->idR = RestoDAO::dernierNumero();
-    $this->idU = $unIdU;
-    $this->nomR = $unNomR;
-    $this->numAdrr = $unNumAdrr;
-    $this->rueAdrr = $uneRueAdrr;
-    $this->cpR = $unCpR;
-    $this->villeR = $uneVilleR;
+  function __construct($idR, $utilisateur, $nomR, $numAdrr, $rueAdrr, $cpR, $villeR){
+    $this->idR = $idR;
+    $this->utilisateur = $utilisateur;
+    $this->nomR = $nomR;
+    $this->numAdrr = $numAdrr;
+    $this->rueAdrr = $rueAdrr;
+    $this->cpR = $cpR;
+    $this->villeR = $villeR;
   }
 
   public function getIdR(){
     return $this->idR;
   }
-  public function getIdU(){
-    return $this->idU;
+  public function getUtilisateur(){
+    return $this->utilisateur;
   }
-  public function setIdU($unIdU){
-    $this->idU = $unIdU;
+  public function setUtilisateur($utilisateur){
+    $this->utilisateur = $utilisateur;
   }
   public function getNomR(){
     return $this->nomR;
@@ -60,15 +60,10 @@ class Resto{
   }
 
   public function hydrate(array $donnees){
-		foreach ($donnees as $key => $value){
-			$method = 'set'.ucfirst($key);
-			if (method_exists($this, $method)){
-				$this->$method($value);
-			}
-		}
-	}
-
+    foreach ($donnees as $key => $value){
+      $method = 'set'.ucfirst($key);
+      if (method_exists($this, $method))
+        $this->$method($value);
+    }
+  }
 }
-
-
- ?>

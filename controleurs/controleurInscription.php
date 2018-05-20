@@ -25,35 +25,32 @@ if(isset($_POST['inscrire'])){
     //include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
   }
 
-$formulaireInscription = new Formulaire('post', 'index.php', 'formInscription', 'formUniforme');
-
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabel("Veuillez vous inscrire"), 1);
-$formulaireInscription->ajouterComposantTab();
-
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("nom", "nom", '',1, 'Nom'), 1);
-$formulaireInscription->ajouterComposantTab();
-
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("prenom", "prenom", '',1, 'Prénom'), 1);
-$formulaireInscription->ajouterComposantTab();
-
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("civilite", "Civilite:"), 1);
-
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("civilite", "M", "M"), 1);
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("civilite", "Mme", "Mme"), 1);
-$formulaireInscription->ajouterComposantTab();
+$formulaireInscription = new Formulaire('post', 'index.php', 'formInscription', 'formInscr');
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("typeU", "Vous êtes ?"), 1);
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "restaurateur", "restaurateur"), 1);
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "client", "client"), 1);
+$formulaireInscription->ajouterComposantTab();
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "Restaurateur", "restaurateur", false), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("typeU", "Client", "client", false), 1);
+$formulaireInscription->ajouterComposantTab();
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerLabelFor("civilite", "Civilite:"), 1);
+$formulaireInscription->ajouterComposantTab();
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("civilite", "M", "M", false), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerRadioButton("civilite", "Mme", "Mme", false), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("email", "email", '',1, 'Email'), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("nom", "nom", '',1, ' Nom'), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp", "mdp", '', 1,'saisir votre mot de passe', 0), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("prenom", "prenom", '',1, ' Prénom'), 1);
 $formulaireInscription->ajouterComposantTab();
 
-$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp2", "mdp2", '', 1,'confirmer votre mot de passe', 0), 1);
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputTexte("email", "email", '',1, ' Email'), 1);
+$formulaireInscription->ajouterComposantTab();
+
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp", "mdp", '', 1,' Saisir votre mot de passe', 0), 1);
+$formulaireInscription->ajouterComposantTab();
+
+$formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputPass("mdp2", "mdp2", '', 1,' Confirmer votre mot de passe', 0), 1);
 $formulaireInscription->ajouterComposantTab();
 
 $formulaireInscription->ajouterComposantLigne($formulaireInscription->creerInputSubmit("inscrire", "inscrire", "inscrire"),1);;

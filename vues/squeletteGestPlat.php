@@ -5,11 +5,13 @@
 	</div>
 
 	<div id="content">
-		<?php include_once "gestPlat.php" ?>
+        <main>
+		    <?php include_once "gestPlat.php" ?>
+        </main>
 	</div>
 
 	<div id="bas">
-		<?php //include_once 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</div>
 
 </div>

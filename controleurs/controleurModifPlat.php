@@ -1,51 +1,68 @@
 <?php
 
-  $unPlat = PlatDAO::lePlatParId($_SESSION['idPlat'], 'IDP');
-  $lesTypesPLats = TypePlatDAO::lesTypesPlats();
+$_SESSION['easyFoodMP'] = "GestPlat";
 
-  if (isset($_POST['modifierPlat'])) {
-    $unPlat->setNomP($_POST['nom']);
-    $unPlat->setIdT($_POST['typePlat']);
-    $unPlat->setPrixFournisseurP($_POST['prixF']);
-    $unPlat->setPrixClientP($_POST['prixC']);
-    $unPlat->setDescriptionP($_POST['description']);
-    if (PlatDAO::modifier($unPlat)){
-      $msg = "Le plat a bien été modifié.";
-    }else {
-      $msg = "Veuillez modifier les champs avant d'envoyer.";
+if (isset($_GET['id']) && isset($_GET['action'])) {
+    $_SESSION['idPlat'] = $_GET['id'];
+    $plat = PlatDAO::getPlat($_SESSION['idPlat']);
+}else {
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+}
+
+if ($_GET['action'] == "supp") {
+    PlatDAO::delPlat($plat);
+    include_once dispatcher::dispatch($_SESSION['easyFoodMP']);
+} elseif ($_GET['action'] == "modif") {
+
+    if (isset($_POST['modifierPlat'])) {
+        $plat->setNomP($_POST['nom']);
+        $plat->setTypePlat(TypePlatDAO::getTypePlat($_POST['typePlat']));
+        $plat->setPrixFournisseurP($_POST['prixF']);
+        $plat->setPrixClientP($_POST['prixC']);
+        $plat->setDescriptionP($_POST['description']);
+        if (PlatDAO::setPlat($plat))
+            $msg = "Le plat a bien été modifié.";
+        else
+            $msg = "Veuillez modifier les champs avant d'envoyer.";
     }
-  }
 
-  $formulaireModifPlat = new Formulaire('post', 'index.php', 'fModifPlat', '');
+    $lesTypesPLats = TypePlatDAO::listTypePlat();
+    $formulaireModifPlat = new Formulaire('post', 'index.php', 'fModifPlat', 'formUniforme');
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('nom', 'Nom :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('nom', 'nom', $unPlat->getNomP(), 1, ''), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('nom', 'Nom'), 1);
+    $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('nom', 'nom', $plat->getNomP(), 1, ''), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('typePlat', 'Type de plat :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerSelectTypePlat('typePlat', 'typePlat', 'typePlat', $lesTypesPLats, $unPlat->getIdT()), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('typePlat', 'Type de plat'), 1);
+    $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerSelectTypePlat('typePlat', 'typePlat', $lesTypesPLats, $plat->getTypePlat()->getIdT()), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('prixF', 'Prix du fournisseur :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('prixF', 'prixF', $unPlat->getPrixFournisseurP(), 1, ''), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('prixF', 'Prix du fournisseur'), 1);
+    $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('prixF', 'prixF', $plat->getPrixFournisseurP(), 1, ''), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('prixC', 'Prix du client :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('prixC', 'prixC', $unPlat->getPrixClientP(), 1, ''), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('prixC', 'Prix du client'), 1);
+    $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('prixC', 'prixC', $plat->getPrixClientP(), 1, ''), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('description', 'Description :'), 1);
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('description', 'description', $unPlat->getDescriptionP(), 1, ''), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabelFor('description', 'Description'), 1);
+    $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputTexte('description', 'description', $plat->getDescriptionP(), 1, ''), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputSubmit('modifierPlat', 'modifierPlat', "Modifier"), 1);
-  $formulaireModifPlat->ajouterComposantTab();
+    $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerInputSubmit('modifierPlat', 'modifierPlat', "Modifier"), 1);
+    $formulaireModifPlat->ajouterComposantTab();
 
-  if (isset($msg)){$formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabel($msg), 1);}
-  $formulaireModifPlat->ajouterComposantTab();
+    if (isset($msg)) {
+        $formulaireModifPlat->ajouterComposantLigne($formulaireModifPlat->creerLabel($msg), 1);
+    }
+    $formulaireModifPlat->ajouterComposantTab();
 
-  $formulaireModifPlat->creerFormulaire();
+    $formulaireModifPlat->creerFormulaire();
 
-  include_once "vues/squeletteModifPlat.php";
-
- ?>
+    include_once "vues/squeletteModifPlat.php";
+}

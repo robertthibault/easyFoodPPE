@@ -1,32 +1,64 @@
 @charset "ISO-8859-1";
 *{
-	margin:0%;
-	padding:0%;
+    margin: 0;
+	padding: 0;
 }
-
 
 /****************************************************/
 /*styles pour la zone centrale de la page           */
 /****************************************************/
 main {
-	margin-top: 100px;
-	margin-left: 200px;
-	padding-top: 0px;
+	margin-top: 30px;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: 30px;
 	min-height: 600px;
  	font-size: 15px;
- 	margin-top:200px;
 	font-weight: bold;
+	/*background-color: #00ccbc;*/
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	background-image:url(../images/background.png);
+	background-repeat:no-repeat;
+	background-position: 50% 50%;
+}
+
+#content{
+    min-height: 800px;
 }
 
 /****************************************************/
 /*styles pour le bandeau                            */
 /****************************************************/
+label#Slogan{
+	margin-left: 20px;
+	color: #b30000;
+	text-decoration: none;
+}
 
+#pied{
+	bottom:0;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 0.8em;
+	clear: both;
+	text-align: center;
+	padding: 0px 217px 5px 190px;
+	background-color: #636464;
+}
 .bandeau {
   height: 120px;
 	background: url("../images/easyFoodMini.png") no-repeat left top;
 }
-
+#banniere{
+	background: #FFFFFF url("../images/logo.png") no-repeat left top;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 22px;
+	font-weight: normal;
+	color: #333333;
+	padding: 0px 0px 0px 101px;
+	height: 110px;
+}
 /****************************************************/
 /*styles pour le header                             */
 /****************************************************/
@@ -55,24 +87,17 @@ header {
 	height: 70px;
 	margin-left:0px;
 }
-#separateur_menuP{
-	width: 100%;
-	border: none;
-	background-color: red;
-	margin-top: 18px;
-	height: 5px;
-}
 
 /****************************************************/
 /*styles pour le menu principal                     */
 /****************************************************/
 nav.menuPrincipal{
-	background-color: #FAFAFA;
-	font-size: 0px;
-	text-align: right;
-	height: 75px;
-	padding: 0px;
-
+	margin-bottom: 15px;
+	padding: 0px 0 0 0;
+	list-style: none;
+	border-top: 1px solid #F48221;
+	box-shadow: 0px 3px 5px #555555;
+	height: 58px;
 
 }
 
@@ -80,42 +105,48 @@ nav.menuPrincipal ul {
 	display: inline-block;
 	list-style: none;
 	margin-top:5px;
-
-
 }
-
 
 nav.menuPrincipal ul li {
 	display: inline-block;
 	font-size: 20px;
 	font-weight: bold;
-	font-family: Helvetica;
+	list-style-type: none;
 }
 
 
 nav.menuPrincipal ul li a {
-	display: table-cell;
-    text-decoration: none;
-  	color: black;
-  	text-align: center;
-  	vertical-align: middle;
-  	height: 50px;
-  	width: 140px;
+	float: left;
+	height: 35px;
+	padding: 5px 10px 10px 10px;
+	color: #e60000;
+	text-align: center;
+	font: normal 16px/22px Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	list-style-type: none;
 }
 
+li#Connexion{
+	margin-left: 1570px;
+}
+li#Accueil{
+	margin-left: 40px;
+}
+li#DÈconnexion{
+	margin-left: 1420px;
+}
+li#DÈconnexion1{
+	margin-left: 1210px;
+}
+li#DÈconnexion2{
+	margin-left: 1300px;
+}
 nav.menuPrincipal ul li a:hover {
-  color: grey;
-	transition:0.5s;
-}
-
-nav.menuPrincipal ul li .actif {
-		display: table-cell;
-  	background-color: ivory;
-  	color: black;
-  	text-align: center;
-  	vertical-align: middle;
-  	height: 50px;
-  	width: 140px;
+	color: #fafafa;
+	background-color: #ff0000;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 /****************************************************/
@@ -123,7 +154,6 @@ nav.menuPrincipal ul li .actif {
 /****************************************************/
 
 .texteAccueil {
-  width: 70%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 20px;
@@ -152,42 +182,348 @@ nav.menuPrincipal ul li .actif {
   margin: 10px;
   padding-bottom: 100px;
 }
+
+/****************************************************/
+/*styles pour le formulaire Connexion           */
+/****************************************************/
+
+.formConnex{
+	margin-top: 8%;
+	margin-left:41%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
+}
+.formConnex table{
+	margin-bottom: 30px;
+}
+
+.formConnex input[type="text"]{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 3px;
+	margin-left: 20px;
+	border-width: 2px;
+	border-color: #474C4B;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formConnex input[type="password"]{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 3px;
+	margin-left: 20px;
+	border-width: 2px;
+	border-color: #474C4B;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formConnex input[type='radio']{
+	margin-top: 3px;
+	border-width: 2px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+}
+.formConnex input[type='submit']{
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #b30000;
+	margin-top: 3px;
+	margin-left: 20px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formConnex input[type='submit']:hover{
+	background-color: #b30000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.3s;
+}
+
+/****************************************************/
+/*styles pour le formulaire inscription          */
+/****************************************************/
+div#laform{
+	margin-top: -100px;
+}
+div#formautre{
+	margin-top: -80px;
+	margin-left: 20px;
+}
+
+.formInscr{
+	margin-top: 8%;
+	margin-left:41%;
+	height: 100px;
+	z-index: 10;
+	display: inline-block;
+}
+.formInscr table{
+	margin-bottom: 30px;
+}
+
+.formInscr input[type="text"]{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 8px;
+	margin-left: 20px;
+	border-width: 2px;
+	border-color: #474C4B;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formInscr input[type="password"]{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-top: 8px;
+	margin-left: 20px;
+	border-width: 2px;
+	border-color: #474C4B;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formInscr input[type='radio']{
+	margin-top: 3px;
+	border-width: 2px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+}
+.formInscr input[type='submit']{
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #b30000;
+	margin-top: 3px;
+	margin-left: 20px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formInscr input[type='submit']:hover{
+	background-color: #b30000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.3s;
+}
+.formInscr input#Mme{
+	margin-left: -205px;
+}
+.formInscr input#M{
+	margin-left: 25px;
+}
+.formInscr input#restaurateur{
+	margin-left: 25px;
+}
+.formInscr input#client{
+	margin-left: -135px;
+}
+.formInscr input#nom{
+	margin-top: 10px;
+}
+
+/****************************************************/
+/*styles pour le formulaire Bouton retour           */
+/****************************************************/
+
+.formulaireBoutonRetour{
+	font: normal 16px Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin-top: 17%;
+	margin-bottom: 17.8%;
+}
+.formulaireBoutonRetour input[type='submit']{
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #b30000;
+	margin-top: 3px;
+	margin-left: 20px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+
+.formulaireBoutonRetour input[type='submit']:hover{
+	background-color: #b30000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.3s;
+}
+
 /****************************************************/
 /*styles pour le formulaire g√©n√©ralis√©           */
 /****************************************************/
 
 .formUniforme{
-	margin-top: 8%;
-	margin-left:35%;
+    margin-top: 8%;
+	margin-left:36.5%;
 	height: 100px;
 	z-index: 10;
 	display: inline-block;
 }
 
-.formUniforme input{
+.formUniforme table{
+    background-color: rgba(255,255,255,0.6);
+    padding: 5px 10px 5px 5px;
+    border: 1px #cfcfcf solid;
+}
+
+.formUniforme input, select{
+    margin-bottom: 10px;
+}
+
+.formUniforme input[type="text"]{
 	background-color: #FAFAFA;
 	border-style: solid;
-	margin-top: 10px;
+	margin-top: 3px;
 	margin-left: 20px;
 	border-width: 2px;
 	border-color: #474C4B;
-	text-align: center;
 	font-size: 12px;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	color: black;
-	width: 250px;
-	height: 25px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
 }
 
-.formUniforme input[type='submit']:hover{
-	background-color: #E6E6E6;
+.formUniforme select{
+    background-color: #FAFAFA;
+    border-style: solid;
+    margin-left: 20px;
+    border-width: 2px;
+    border-color: #474C4B;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: black;
+    width: 270px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.formUniforme input[type="password"]{
+	background-color: #FAFAFA;
+	border-style: solid;
+	margin-left: 20px;
+	border-width: 2px;
+	border-color: #474C4B;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formUniforme input[type='radio']{
+	border-width: 2px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: black;
+}
+.formUniforme input[type='submit']{
+	background-color: white;
 	border-style: solid;
 	border-width: 2px;
-	border-color: red;
+	border-color: #b30000;
 	font-size: 15px;
 	letter-spacing: 2px;
-	color: red;
-	transition:0.5s;
+	color: #b30000;
+	margin-left: 20px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formUniforme input[type='submit']:hover{
+	background-color: #b30000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.3s;
+}
+.formUniforme input#Mme{
+	margin-left: -205px;
+}
+.formUniforme input#M{
+	margin-left: 25px;
+}
+input#inscrire{
+	margin-top: 26px;
+	margin-bottom: 30px;
+}
+input#Valider{
+	margin-top: 30px;
+}
+input#modifier{
+margin-top: 20px;
+}
+input#inscrit{
+	margin-top: -10px;
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #00a396;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #00a396;
+	margin-left: 20px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+
+}
+input#inscrit:hover{
+	background-color: #00a396;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #00a396;
+	font-size: 17px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.2s;
 }
 /*************************************************************/
 
@@ -210,12 +546,230 @@ nav.menuPrincipal ul li .actif {
 	text-align: left;
 }
 
-.bouton{
-	/*display: inline-block;
-	position:right;
-	margin-left: 140px;*/
-}
 .labelBouton{
 	display: flex;
 	justify-content: space-between;
+}
+
+.aButton{
+    text-decoration-line: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #b30000;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #b30000;
+    margin-left: 20px;
+    padding: 1px;
+    width: 270px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+/*----------------------------------------------------------*/
+/*-------- Tableau Historique Commande ----------*/
+/*----------------------------------------------------------*/
+
+.tab{
+	margin-top: 40px;
+	margin-bottom: 50px;
+	text-align: center;
+	margin-left: 94px;
+}
+
+.tab a {
+	text-decoration: none;
+}
+
+.tab table{
+	border-collapse: collapse;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.tab td , th{
+	width: 150px;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+	background-color: whitesmoke;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.tab th {
+	color: white;
+	background-color: #b30000;
+}
+
+.tab img{
+	width: 30px;
+	height: 30px;
+}
+
+.tab .tdButton{
+    background-color: transparent;
+    border: none;
+}
+
+/*----------------------------------------------------------*/
+/*-------- Tableau DÈtail commande ----------*/
+/*----------------------------------------------------------*/
+
+.tabDetail{
+	margin-top: 40px;
+	margin-bottom: 50px;
+	font-family: "Open Sans";
+	text-align: center;
+	margin-left: 320px;
+}
+
+.tabDetail a {
+	text-decoration: none;
+}
+
+.tabDetail table{
+	border-collapse: collapse;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.tabDetail td , th{
+	width: 150px;
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+	background-color: whitesmoke;
+	/*border-left: 1px solid #00a396;*/
+	/*border-right: 1px solid #00a396;*/
+}
+
+.tabDetail th {
+	background-color: #b30000;
+}
+
+.tabDetail img{
+	width: 30px;
+	height: 30px;
+}
+
+/*----------------------------------------------------------*/
+/*-------- Formulaire DetailCommande ----------*/
+/*----------------------------------------------------------*/
+
+input#retourHistorique{
+	margin-top: -10px;
+	background-color: #00a396;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #E6E6E6;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	margin-left: 480px;
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+
+}
+input#retourHistorique:hover{
+	background-color: #E6E6E6;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #00a396;
+	font-size: 17px;
+	letter-spacing: 2px;
+	color: #00a396;
+	transition:0.2s;
+}
+
+/*----------------------------------------------------------*/
+/*-------- Formulaire Evaluation ----------*/
+/*----------------------------------------------------------*/
+
+.formulaireEvaluation input[type='text']{
+	border-width: 2px;
+	border-color: #474C4B;
+	background-color: #FAFAFA;
+	border-style: solid;
+	position: relative;
+	margin-top: 3px;
+	margin-left: 50px;
+	color: black;
+	width: 220px;
+	height: 25px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.formulaireEvaluation{
+	/*height: 100px;*/
+	display: inline-block;
+	margin-right: 14%;
+	margin-left: 36%;
+	margin-top: 14px;
+}
+
+.formulaireEvaluation label{
+	font-size: 16px;
+}
+
+.formulaireEvaluation label#nomResto{
+	margin-left: 50px;
+	color: #b30000;
+	font-size: 18px;
+}
+.formulaireEvaluation label#numCommande{
+	color: #b30000;
+	font-size: 18px;
+}
+.formulaireEvaluation label#dateCommande{
+	margin-left: 50px;
+	font-size: 18px;
+}
+.formulaireEvaluation textarea{
+	border-width: 2px;
+	border-color: #474C4B;
+	background-color: #FAFAFA;
+	border-style: solid;
+	position: relative;
+	margin-top: 3px;
+	margin-left: 50px;
+	color: black;
+	width: 220px;
+	height: 150px;
+	text-align: left;
+	font-size: 14px;
+	font-family: Verdana;
+	resize: none;
+}
+.formulaireEvaluation input[type='submit']{
+	margin-top: 18px;
+	margin-left: 25px;
+	background-color: white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #b30000;
+	/*margin-top: 3px;
+	margin-left: 20px;*/
+	width: 270px;
+	height: 35px;
+	border-radius: 5px;
+}
+.formulaireEvaluation input[type='submit']:hover{
+	background-color: #b30000;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #b30000;
+	font-size: 15px;
+	letter-spacing: 2px;
+	color: #E6E6E6;
+	transition:0.3s;
+}
+#Amodifier{
+	/*margin-right: 35px;*/
+	/*margin-left: 300px;*/
 }

@@ -56,6 +56,13 @@ class Formulaire{
 		return $composant;
 	}
 
+    public function creerInputTexteDisabled($uneValue){
+        $composant = "<input type = 'text' disabled ";
+        if (!empty($uneValue))
+            $composant .= "value = '" . $uneValue . "'/>";
+        return $composant;
+    }
+
 	public function creerInputPass($unNom, $unId, $uneValue, $required , $placeholder){
 	    $composant = "<input type = 'password' name = '" . $unNom . "' id = '" . $unId . "' ";
 	    if (!empty($uneValue)){
@@ -72,8 +79,11 @@ class Formulaire{
 	}
 
 	/////////// RADIO BOUTON
-	public function creerRadioButton($unNom, $uneValue, $unId){
+	public function creerRadioButton($unNom, $uneValue, $unId, $unBool){
 		$composant = "<input type = 'radio' name = '" . $unNom . "' id = '" . $unId . "' ";
+		if($unBool){
+		    $composant .= "checked= 'checked' ";
+        }
 		if (!empty($uneValue)){
 				$composant .= "value = '" . $uneValue . "' ";
 		}
@@ -90,7 +100,7 @@ class Formulaire{
 
   //////////////////////////////////////////////////////
 	public function creerLabelFor($unFor,  $unLabel){
-		$composant = "<label for='" . $unFor . "'>" . $unLabel . "</label>";
+		$composant = "<label id='". $unFor ."' for='" . $unFor . "'>" . $unLabel . "</label>";
 		return $composant;
 	}
 
@@ -109,7 +119,7 @@ class Formulaire{
 		return $composant;
 	}
 
-	public function creerSelectTypePlat($unNom, $unId, $unLabel, $options, $selected){
+	public function creerSelectTypePlat($unNom, $unId, $options, $selected){
 		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
 		$i = 0;
 		foreach ($options as $option) {
@@ -123,6 +133,14 @@ class Formulaire{
 		$composant .= "</select></td></tr>";
 		return $composant;
 	}
+
+    ///////////////// CREER UN TEXTEAREA
+    public function creerTextArea($ligne, $colonne, $value, $unNom, $unId, $unNBCarac, $placeholder){
+        $composant = "<textarea name='". $unNom ."' id='". $unId ."' maxlength='". $unNBCarac ."' rows='" . $ligne . "' cols='" . $colonne . "' placeholder = '" . $placeholder . "' required='required'>";
+        $composant .= $value;
+        $composant .= "</textarea>";
+        return $composant;
+    }
 
 	public function creerInputSubmit($unNom, $unId, $uneValue){
 		$composant = "<input type = 'submit' name = '" . $unNom . "' id = '" . $unId . "' ";

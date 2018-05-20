@@ -1,23 +1,15 @@
-<div id="conteneur">
+<div classe="conteneur">
+    <header>
+        <?php include_once 'haut.php' ;?>
+    </header>
 
-<div id="header">
-		<?php include_once 'haut.php' ; ?>
-	</div>
-
-	<div id="content">
-		<div id="formUniforme">
-			<main>
-				<?php $formulaireInscription->afficherFormulaire();
-				if(isset($msg)){
-					echo $msg;
-				}?>
-		 </main>
-		</div>
-		</div>
-	</div>
-
-	<div id="bas">
-		<?php include_once 'bas.php' ;?>
-	</div>
-
+    <main>
+        <div class='texteAccueil'>
+            <h1><span>Formulaire inscription</span></h1>
+        </div>
+        <div id="laform">
+            <?php $formulaireInscription->afficherFormulaire();
+            ?>
+        </div>
+    </main>
 </div>

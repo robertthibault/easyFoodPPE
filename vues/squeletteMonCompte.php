@@ -1,23 +1,15 @@
 <div id="conteneur">
-
-<div id="header">
-		<?php include_once 'haut.php' ; ?>
-	</div>
-
-	<div id="content">
-		<div id="formUniforme">
-				<p id ='titre'>Veuillez modifier vos informations</p>
-				<?php $formulaireMonCompte->afficherFormulaire();
-				if(isset($msg)){
-					echo $msg;
-				}?>
-
-		</div>
-		</div>
-	</div>
-
-	<div id="bas">
-		<?php include_once 'bas.php' ;?>
-	</div>
-
+    <?php include_once 'haut.php' ; ?>
+<main>
+    <div class='texteAccueil'>
+        <h1><span>Mon Compte</span></h1>
+        <div id="formautre">
+            <?php $formulaireMonCompte->afficherFormulaire();
+            ?>
+        </div>
+    </div>
+</main>
+<footer>
+    <?php include_once 'bas.php' ;?>
+</footer>
 </div>
