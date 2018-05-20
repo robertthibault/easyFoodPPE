@@ -1,15 +1,17 @@
 <div id="conteneur">
 
 	<div id='header'>
-		<?php //include_once 'haut.php' ;?>
+		<?php include_once 'haut.php' ;?>
 	</div>
 
 	<div id="content">
-		<?php include_once "ModifPlat.php" ?>
+        <main>
+		    <?php include_once "ModifPlat.php" ?>
+        </main>
 	</div>
 
 	<div id="bas">
-		<?php //include_once 'bas.php' ;?>
+		<?php include_once 'bas.php' ;?>
 	</div>
 
 </div>
