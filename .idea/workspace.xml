@@ -40,12 +40,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="controleurGestPlat.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controleurs/controleurGestPlat.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -53,26 +53,42 @@
       <file leaf-file-name="controleurModifPlat.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controleurs/controleurModifPlat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+            <state relative-caret-position="78">
+              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dao.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dao.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modeles/dao.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="294" column="25" selection-start-line="294" selection-start-column="25" selection-end-line="294" selection-end-column="25" />
+            <state relative-caret-position="289">
+              <caret line="182" column="44" lean-forward="true" selection-start-line="182" selection-start-column="44" selection-end-line="182" selection-end-column="44" />
+              <folding>
+                <element signature="n#DBConnex#0;n#!!top" />
+                <element signature="n#utilisateurDAO#0;n#!!top" />
+                <element signature="n#RestoDAO#0;n#!!top" />
+                <element signature="n#CommandeDAO#0;n#!!top" />
+                <element signature="n#EvaluerDAO#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fonctions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fonctions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/fonctions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="167" column="32" lean-forward="true" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
+            <state relative-caret-position="7">
+              <caret line="167" column="32" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typePlat.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modeles/dto/typePlat.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -129,6 +145,10 @@
       <find>content</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/modeles/dao.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
@@ -174,7 +194,6 @@
         <option value="$PROJECT_DIR$/vues/modifPlat.php" />
         <option value="$PROJECT_DIR$/vues/squeletteModifPlat.php" />
         <option value="$PROJECT_DIR$/vues/squeletteGestPlat.php" />
-        <option value="$PROJECT_DIR$/modeles/dto/plat.php" />
         <option value="$PROJECT_DIR$/vues/proposer.php" />
         <option value="$PROJECT_DIR$/vues/squeletteProposer.php" />
         <option value="$PROJECT_DIR$/controleurs/controleurProposer.php" />
@@ -183,9 +202,10 @@
         <option value="$PROJECT_DIR$/controleurs/controleurGestPlat.php" />
         <option value="$PROJECT_DIR$/vues/gestPlat.php" />
         <option value="$PROJECT_DIR$/controleurs/controleurSupprPlat.php" />
-        <option value="$PROJECT_DIR$/modeles/dao.php" />
         <option value="$PROJECT_DIR$/lib/fonctions.php" />
         <option value="$PROJECT_DIR$/controleurs/controleurModifPlat.php" />
+        <option value="$PROJECT_DIR$/modeles/dto/plat.php" />
+        <option value="$PROJECT_DIR$/modeles/dao.php" />
       </list>
     </option>
   </component>
@@ -206,49 +226,58 @@
     <option name="width" value="654" />
     <option name="height" value="991" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
+              <item name="easyFoodPPE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFoodPPE" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
+              <item name="easyFoodPPE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFoodPPE" type="462c0819:PsiDirectoryNode" />
               <item name="controleurs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
+              <item name="easyFoodPPE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFoodPPE" type="462c0819:PsiDirectoryNode" />
               <item name="modeles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
+              <item name="easyFoodPPE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyFoodPPE" type="462c0819:PsiDirectoryNode" />
               <item name="modeles" type="462c0819:PsiDirectoryNode" />
               <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="easyFoodPPE" type="cbb8eebc:String" user="easyFoodPPE" />
             </path>
             <path>
-              <item name="easyFood" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyFood" type="462c0819:PsiDirectoryNode" />
-              <item name="vues" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="easyFoodPPE" type="cbb8eebc:String" user="easyFoodPPE" />
+              <item name="modeles" type="cbb8eebc:String" user="modeles" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="easyFoodPPE" type="cbb8eebc:String" user="easyFoodPPE" />
+              <item name="modeles" type="cbb8eebc:String" user="modeles" />
+              <item name="dto" type="cbb8eebc:String" user="dto" />
             </path>
           </expand>
           <select />
@@ -259,9 +288,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/modeles/dao.php" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.1.1/resources/app/git/cmd/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -303,24 +332,25 @@
       <workItem from="1526217372248" duration="8363000" />
       <workItem from="1526818054773" duration="100000" />
       <workItem from="1526818177708" duration="3345000" />
+      <workItem from="1526822906691" duration="1886000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147171000" />
+    <option name="totallyTimeSpent" value="149057000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32996634" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20703125" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Inspection Results" weight="0.32996634" />
       <window_info anchor="right" id="Database" order="3" weight="0.3296875" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32884398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -330,6 +360,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32996634" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -341,13 +372,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/tableauModeration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="80" lean-forward="true" selection-start-line="8" selection-start-column="80" selection-end-line="8" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tableau.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-586" />
@@ -464,13 +488,6 @@
             <Category>Columns</Category>
           </Categories>
           <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modeles/dto/resto.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -636,20 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modeles/dto/typePlat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="3" lean-forward="true" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modeles/dto/plat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="16" lean-forward="true" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vues/modifPlat.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -691,17 +694,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controleurs/controleurSupprPlat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/controleurs/controleurSupprPlat.php" />
     <entry file="file://$PROJECT_DIR$/controleurs/controleurGestPlat.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -712,24 +709,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modeles/dao.php">
+    <entry file="file://$PROJECT_DIR$/lib/fonctions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="294" column="25" selection-start-line="294" selection-start-column="25" selection-end-line="294" selection-end-column="25" />
+        <state relative-caret-position="7">
+          <caret line="167" column="32" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modeles/dto/resto.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viasa_easyfood.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modeles/dto/typePlat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modeles/dto/plat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controleurs/controleurModifPlat.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        <state relative-caret-position="78">
+          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/fonctions.php">
+    <entry file="file://$PROJECT_DIR$/modeles/dao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="167" column="32" lean-forward="true" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
+        <state relative-caret-position="289">
+          <caret line="182" column="44" lean-forward="true" selection-start-line="182" selection-start-column="44" selection-end-line="182" selection-end-column="44" />
+          <folding>
+            <element signature="n#DBConnex#0;n#!!top" />
+            <element signature="n#utilisateurDAO#0;n#!!top" />
+            <element signature="n#RestoDAO#0;n#!!top" />
+            <element signature="n#CommandeDAO#0;n#!!top" />
+            <element signature="n#EvaluerDAO#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

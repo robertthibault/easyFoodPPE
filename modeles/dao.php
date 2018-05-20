@@ -174,13 +174,9 @@ class TypePlatDAO{
 		$result = [];
 		$sql = "SELECT * FROM TYPE_PLAT;";
 		$liste = DBConnex::getInstance()->queryFetchAll($sql);
-		if(!empty($liste)){
-			foreach($liste as $typePlat){
-				$unTypePlat = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
-				$unTypePlat->hydrate($typePlat);
-				$result[] = $unTypePlat;
-			}
-		}
+		if(!empty($liste))
+			foreach($liste as $typePlat)
+				$result[] = new TypePlat($typePlat['IDT'], $typePlat['LIBELLET']);
 		return $result;
 	}
 
@@ -188,8 +184,17 @@ class TypePlatDAO{
 	    $sql = "SELECT * FROM TYPE_PLAT WHERE IDT=" . $id;
 	    $typePlat = DBConnex::getInstance()->queryFetchFirstRow($sql);
 	    return new TypePlat(
-        $typePlat['IDT'],
-        $typePlat['LIBELLET']);
+            $typePlat['IDT'],
+            $typePlat['LIBELLET']);
+    }
+
+    public static function addTypePlat(TypePlat $typePlat){
+	    $sql = "INSERT INTO type_plat
+                VALUES('".
+                    $typePlat->getIdT()."','".
+                    $typePlat->getLibelleT()."'
+                )";
+	    return DBConnex::getInstance()->insert($sql);
     }
 
     public static function dernierNumero(){

@@ -10,7 +10,7 @@ class Plat{
   private $platVisible;
   private $descriptionP;
 
-  function __construct($idP, $resto, $typePlat, $nomP, $prixFournisseurP, $prixClientP, $estVisible, $descriptionP)
+  function __construct($idP, Resto $resto, TypePlat $typePlat, $nomP, $prixFournisseurP, $prixClientP, $estVisible, $descriptionP)
   {
     $this->idP = $idP;
     $this->resto = $resto;
